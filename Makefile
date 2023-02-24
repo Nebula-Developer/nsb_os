@@ -9,4 +9,4 @@ test:
 
 testlib:
 	mkdir -p ./NSB.OS.Tests/bin/Debug/net7.0/lib/
-	gcc -shared -fPIC ./NSB.OS.Library/NSB.OS.Library.c -o ./NSB.OS.Tests/bin/Debug/net7.0/lib/libNSB.OS.Library.so
+	gcc -shared -fPIC ./NSB.OS.Library/NSB.OS.Library.c -o ./NSB.OS.Tests/bin/Debug/net7.0/lib/libNSB.OS.Library.so -ltermcap
