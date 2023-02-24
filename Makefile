@@ -4,4 +4,4 @@ run:
 	dotnet run --project NSB.OS
 
 test:
-	dotnet run --project NSB.OS.Tests
+	cd NSB.OS.Tests && dotnet test --no-build
