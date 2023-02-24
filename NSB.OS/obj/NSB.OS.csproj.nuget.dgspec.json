@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/nebuladev/Documents/nsb_os/NSB.OS/NSB.OS.csproj": {}
+    "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj": {}
   },
   "projects": {
-    "/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj": {
+    "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj",
+        "projectUniqueName": "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj",
         "projectName": "NSB.OS.Graphics",
-        "projectPath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj",
-        "packagesPath": "/home/nebuladev/.nuget/packages/",
-        "outputPath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/obj/",
+        "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj",
+        "packagesPath": "/Users/nicocook/.nuget/packages/",
+        "outputPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/nebuladev/.nuget/NuGet/NuGet.Config"
+          "/Users/nicocook/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -53,21 +53,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/nebuladev/Documents/nsb_os/NSB.OS/NSB.OS.csproj": {
+    "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/nebuladev/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
+        "projectUniqueName": "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
         "projectName": "NSB.OS",
-        "projectPath": "/home/nebuladev/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
-        "packagesPath": "/home/nebuladev/.nuget/packages/",
-        "outputPath": "/home/nebuladev/Documents/nsb_os/NSB.OS/obj/",
+        "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
+        "packagesPath": "/Users/nicocook/.nuget/packages/",
+        "outputPath": "/Users/nicocook/Documents/nsb_os/NSB.OS/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/nebuladev/.nuget/NuGet/NuGet.Config"
+          "/Users/nicocook/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -79,8 +79,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj": {
-                "projectPath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj"
+              "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj": {
+                "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj"
               }
             }
           }
@@ -107,15 +107,15 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
+              "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
               "version": "[7.0.2, 7.0.2]"
             },
             {
-              "name": "Microsoft.NETCore.App.Crossgen2.linux-x64",
+              "name": "Microsoft.NETCore.App.Crossgen2.osx-x64",
               "version": "[7.0.2, 7.0.2]"
             },
             {
-              "name": "Microsoft.NETCore.App.Runtime.linux-x64",
+              "name": "Microsoft.NETCore.App.Runtime.osx-x64",
               "version": "[7.0.2, 7.0.2]"
             }
           ],
@@ -124,11 +124,11 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
-        "linux-x64": {
+        "osx-x64": {
           "#import": []
         }
       }

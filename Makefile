@@ -8,5 +8,5 @@ test:
 	cd NSB.OS.Tests && dotnet test
 
 testlib:
-	mkdir ./NSB.OS.Tests/bin/Debug/net7.0/lib/ -p
+	mkdir ./NSB.OS.Tests/bin/Debug/net7.0/lib/
 	gcc -shared -fPIC ./NSB.OS.Library/NSB.OS.Library.c -o ./NSB.OS.Tests/bin/Debug/net7.0/lib/libNSB.OS.Library.so

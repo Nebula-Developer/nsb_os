@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "OiBBIxWtseyEsNiFdmnXSgoTqFKhfK0NbgZWN6WuVzCUyNqjeTOqXPTnJFZDLsBLINS7bPFqDV5/8uKmN3Cn1A==",
+  "dgSpecHash": "zDc84/lXYkOGFEauCbEoe96oK4oQzaAosLt+Q7KZ3tmgNZxKgwf27mkIEG/9w1Hq6UMXYtJgsrEQm1mYnRJmOw==",
   "success": true,
-  "projectFilePath": "/home/nebuladev/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
+  "projectFilePath": "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
   "expectedPackageFiles": [
-    "/home/nebuladev/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/7.0.2/microsoft.netcore.app.runtime.linux-x64.7.0.2.nupkg.sha512",
-    "/home/nebuladev/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/7.0.2/microsoft.aspnetcore.app.runtime.linux-x64.7.0.2.nupkg.sha512",
-    "/home/nebuladev/.nuget/packages/microsoft.netcore.app.crossgen2.linux-x64/7.0.2/microsoft.netcore.app.crossgen2.linux-x64.7.0.2.nupkg.sha512"
+    "/Users/nicocook/.nuget/packages/microsoft.netcore.app.runtime.osx-x64/7.0.2/microsoft.netcore.app.runtime.osx-x64.7.0.2.nupkg.sha512",
+    "/Users/nicocook/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-x64/7.0.2/microsoft.aspnetcore.app.runtime.osx-x64.7.0.2.nupkg.sha512",
+    "/Users/nicocook/.nuget/packages/microsoft.netcore.app.crossgen2.osx-x64/7.0.2/microsoft.netcore.app.crossgen2.osx-x64.7.0.2.nupkg.sha512"
   ],
   "logs": []
 }

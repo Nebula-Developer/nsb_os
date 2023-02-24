@@ -1,0 +1,3 @@
+/Users/nicocook/Documents/nsb_os/Publish/NSB.OS.pdb
+/Users/nicocook/Documents/nsb_os/Publish/NSB.OS.Graphics.pdb
+/Users/nicocook/Documents/nsb_os/Publish/NSB.OS

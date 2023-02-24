@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\NSB.OS.Graphics\NSB.OS.Graphics.csproj" />
+    <ProjectReference Include="..\NSB.OS.Library\NSB.OS.Library.csproj" />
   </ItemGroup>
   
   <PropertyGroup>

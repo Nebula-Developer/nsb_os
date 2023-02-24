@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NSB_OS;
+namespace NSB.OS;
 
 public static class OS {
     public static void Main(String[] args) {
