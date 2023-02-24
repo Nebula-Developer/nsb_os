@@ -82,8 +82,8 @@ public static class OS {
             t2.SetString(new Vector2i(0, 5), "Max: " + max);
             t2.SetString(new Vector2i(0, 6), "Min: " + min);
 
-            t2.SetString(new Vector2i(0, 8), "Use Threaded Render: " + (r.UseThreadedRender ? "Yes" : "No"));
-            t2.SetString(new Vector2i(0, 9), "Use Ideal Render Frequency: " + (r.UseIdealRenderFrequency ? "Yes" : "No"));
+            t2.SetString(new Vector2i(0, 8), "Use Threaded Render: " + (r.UseThreadedRender ? "Yes" : "No "));
+            t2.SetString(new Vector2i(0, 9), "Use Ideal Render Frequency: " + (r.UseIdealRenderFrequency ? "Yes" : "No "));
             
             if (Console.KeyAvailable) {
                 ConsoleKeyInfo key = Console.ReadKey(true);
