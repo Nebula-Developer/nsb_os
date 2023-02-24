@@ -1,0 +1,12 @@
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/bin/Debug/net7.0/NSB.OS.Graphics.deps.json
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/bin/Debug/net7.0/NSB.OS.Graphics.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/bin/Debug/net7.0/NSB.OS.Graphics.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/obj/Debug/net7.0/NSB.OS.Graphics.csproj.AssemblyReference.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/obj/Debug/net7.0/NSB.OS.Graphics.GeneratedMSBuildEditorConfig.editorconfig
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/obj/Debug/net7.0/NSB.OS.Graphics.AssemblyInfoInputs.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/obj/Debug/net7.0/NSB.OS.Graphics.AssemblyInfo.cs
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/obj/Debug/net7.0/NSB.OS.Graphics.csproj.CoreCompileInputs.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/obj/Debug/net7.0/NSB.OS.Graphics.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/obj/Debug/net7.0/refint/NSB.OS.Graphics.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/obj/Debug/net7.0/NSB.OS.Graphics.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/obj/Debug/net7.0/ref/NSB.OS.Graphics.dll

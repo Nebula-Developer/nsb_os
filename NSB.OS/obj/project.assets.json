@@ -1,12 +1,42 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {},
-    "net7.0/linux-x64": {}
+    "net7.0": {
+      "NSB.OS.Graphics/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/NSB.OS.Graphics.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NSB.OS.Graphics.dll": {}
+        }
+      }
+    },
+    "net7.0/linux-x64": {
+      "NSB.OS.Graphics/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/NSB.OS.Graphics.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NSB.OS.Graphics.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "NSB.OS.Graphics/1.0.0": {
+      "type": "project",
+      "path": "../NSB.OS.Graphics/NSB.OS.Graphics.csproj",
+      "msbuildProject": "../NSB.OS.Graphics/NSB.OS.Graphics.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "NSB.OS.Graphics >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "/home/nebuladev/.nuget/packages/": {}
@@ -32,7 +62,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj": {
+              "projectPath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

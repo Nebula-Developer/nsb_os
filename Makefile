@@ -1,10 +1,12 @@
-.PHONY: run test publish
+.PHONY: run test publish testlib
 
 run:
-	dotnet run --project NSB.OS
+	bash build.sh
 
 test:
-	cd NSB.OS.Tests && dotnet test --no-build
+	make testlib
+	cd NSB.OS.Tests && dotnet test
 
-publish:
-	cd NSB.OS && dotnet publish -c Release -o ../publish
+testlib:
+	mkdir ./NSB.OS.Tests/bin/Debug/net7.0/lib/ -p
+	gcc -shared -fPIC ./NSB.OS.Library/NSB.OS.Library.c -o ./NSB.OS.Tests/bin/Debug/net7.0/lib/libNSB.OS.Library.so

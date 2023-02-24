@@ -9,6 +9,7 @@
     ".NETCoreApp,Version=v7.0/linux-x64": {
       "NSB.OS/1.0.0": {
         "dependencies": {
+          "NSB.OS.Graphics": "1.0.0",
           "runtimepack.Microsoft.NETCore.App.Runtime.linux-x64": "7.0.2"
         },
         "runtime": {
@@ -734,6 +735,11 @@
             "fileVersion": "0.0.0.0"
           }
         }
+      },
+      "NSB.OS.Graphics/1.0.0": {
+        "runtime": {
+          "NSB.OS.Graphics.dll": {}
+        }
       }
     }
   },
@@ -745,6 +751,11 @@
     },
     "runtimepack.Microsoft.NETCore.App.Runtime.linux-x64/7.0.2": {
       "type": "runtimepack",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NSB.OS.Graphics/1.0.0": {
+      "type": "project",
       "serviceable": false,
       "sha512": ""
     }

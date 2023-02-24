@@ -196,3 +196,5 @@
 /home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/linux-x64/NSB.OS.pdb
 /home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/linux-x64/NSB.OS.genruntimeconfig.cache
 /home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/linux-x64/ref/NSB.OS.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS/bin/Release/net7.0/linux-x64/NSB.OS.Graphics.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS/bin/Release/net7.0/linux-x64/NSB.OS.Graphics.pdb
