@@ -5,6 +5,15 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <!-- Make it so that it publishes to a single exe without any dlls -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
+    <PublishReadyToRunEmitSymbols>true</PublishReadyToRunEmitSymbols>
+    <PublishReadyToRunUseCrossgen2>true</PublishReadyToRunUseCrossgen2>
+    <PublishReadyToRunComposite>true</PublishReadyToRunComposite>
+    <PublishReadyToRunUseCrossgen2Composite>true</PublishReadyToRunUseCrossgen2Composite>
   </PropertyGroup>
 
 </Project>

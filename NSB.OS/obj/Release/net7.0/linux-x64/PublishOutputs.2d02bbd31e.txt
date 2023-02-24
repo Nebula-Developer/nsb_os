@@ -1,0 +1,3 @@
+/home/nebuladev/Documents/nsb_os/publish/NSB.OS.pdb
+/home/nebuladev/Documents/nsb_os/publish/NSB.OS.r2r.ni.r2rmap
+/home/nebuladev/Documents/nsb_os/publish/NSB.OS

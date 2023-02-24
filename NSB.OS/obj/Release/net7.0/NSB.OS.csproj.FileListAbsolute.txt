@@ -1,0 +1,15 @@
+/home/nebuladev/Documents/nsb_os/NSB.OS/bin/Release/net7.0/NSB.OS
+/home/nebuladev/Documents/nsb_os/NSB.OS/bin/Release/net7.0/NSB.OS.deps.json
+/home/nebuladev/Documents/nsb_os/NSB.OS/bin/Release/net7.0/NSB.OS.runtimeconfig.json
+/home/nebuladev/Documents/nsb_os/NSB.OS/bin/Release/net7.0/NSB.OS.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS/bin/Release/net7.0/NSB.OS.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.csproj.AssemblyReference.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.GeneratedMSBuildEditorConfig.editorconfig
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.AssemblyInfoInputs.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.AssemblyInfo.cs
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.csproj.CoreCompileInputs.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/refint/NSB.OS.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.genruntimeconfig.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/ref/NSB.OS.dll
