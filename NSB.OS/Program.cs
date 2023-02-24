@@ -11,11 +11,14 @@ public static class OS {
     public static void Main(String[] args) {
         Console.WriteLine("This project is not yet functional. Please come back later.");
         Link.TestLink();
-        Display t = new Display(new Vector2i(0, 2), new Vector2i(5, 5));
-        Display t2 = new Display(new Vector2i(0, 2), new Vector2i(5, 5));
-        t.SetPixel(new Vector2i(0, 0).ToCharSquare(), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
-        t2.SetPixel(new Vector2i(0, 0).ToCharSquare(), new Pixel('X', new RGB(255, 100, 200), new RGB(0, 255, 0)));
+        Display t = new Display(new Vector2i(0, 2), new Vector2i(20, 20).ToCharSquare());
+        Display t2 = new Display(new Vector2i(0, 2), new Vector2i(17, 10).ToCharSquare());
+        t.SetPixel(new Vector2i(0, 0), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+        t.SetPixel(new Vector2i(1, 0), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+        t2.SetPixel(new Vector2i(0, 0), new Pixel(' ', new RGB(255, 100, 200), new RGB(0, 255, 0)));
+        t2.SetPixel(new Vector2i(1, 0), new Pixel(' ', new RGB(255, 100, 200), new RGB(0, 255, 0)));
         Renderer r = new Renderer(t, t2);
+        r.RenderFrequency = 15;
 
         DateTime dt = DateTime.Now;
         List<double> times = new List<double>();
@@ -49,7 +52,7 @@ public static class OS {
         int oldX = 0, oldY = 0;
 
         t.Update = () => {
-            Console.SetCursorPosition(0, 0);
+            // Console.SetCursorPosition(0, 0);
             double time = Math.Round((DateTime.Now - dt).TotalMilliseconds, 2);
             times.Add(time);
             if (times.Count > 50) times.RemoveAt(0);
@@ -59,18 +62,28 @@ public static class OS {
             double ideal = 1000 / r.RenderFrequency;
             double max = getMax(), min = getMin();
 
-            Console.SetCursorPosition(0, 0);
-            Console.WriteLine(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, 0);
-            Console.WriteLine($"Average: {average}ms \t\t Ideal: {ideal}ms \t\t FPS: {fps} \t\t Max: {max}ms \t\t Min: {min}ms \t\t Render Frequency: {r.RenderFrequency}");
+            // Console.SetCursorPosition(0, 0);
+            // Console.WriteLine(new string(' ', Console.WindowWidth));
+            // Console.SetCursorPosition(0, 0);
+            // Console.WriteLine($"Average: {average}ms \t\t Ideal: {ideal}ms \t\t FPS: {fps} \t\t Max: {max}ms \t\t Min: {min}ms \t\t Render Frequency: {r.RenderFrequency}");
 
-            Console.SetCursorPosition(0, 1);
-            Console.WriteLine(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, 1);
-            bool utr = r.UseThreadedRender;
-            bool uir = r.UseIdealRenderFrequency;
-            string yes = "[X]", no = "[ ]";
-            Console.WriteLine($"Use Threaded Render: {(utr ? yes : no)} \t\t Use Ideal Render Frequency: {(uir ? yes : no)}");
+            // Console.SetCursorPosition(0, 1);
+            // Console.WriteLine(new string(' ', Console.WindowWidth));
+            // Console.SetCursorPosition(0, 1);
+            // bool utr = r.UseThreadedRender;
+            // bool uir = r.UseIdealRenderFrequency;
+            // string yes = "[X]", no = "[ ]";
+            // Console.WriteLine($"Use Threaded Render: {(utr ? yes : no)} \t\t Use Ideal Render Frequency: {(uir ? yes : no)}");
+
+            t2.SetString(new Vector2i(0, 1), "Render Frequency: " + r.RenderFrequency);
+            t2.SetString(new Vector2i(0, 2), "FPS: " + fps);
+            t2.SetString(new Vector2i(0, 3), "Average: " + average);
+            t2.SetString(new Vector2i(0, 4), "Ideal: " + ideal);
+            t2.SetString(new Vector2i(0, 5), "Max: " + max);
+            t2.SetString(new Vector2i(0, 6), "Min: " + min);
+
+            t2.SetString(new Vector2i(0, 8), "Use Threaded Render: " + (r.UseThreadedRender ? "Yes" : "No"));
+            t2.SetString(new Vector2i(0, 9), "Use Ideal Render Frequency: " + (r.UseIdealRenderFrequency ? "Yes" : "No"));
             
             if (Console.KeyAvailable) {
                 ConsoleKeyInfo key = Console.ReadKey(true);
@@ -95,28 +108,36 @@ public static class OS {
                     y--;
                     y = y < 0 ? 0 : y;
                     t.SetPixel(new Vector2i(oldX, oldY), new Pixel());
-                    t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                    t.SetPixel(new Vector2i(oldX + 1, oldY), new Pixel());
+                    t.SetPixel(new Vector2i(x, y), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                    t.SetPixel(new Vector2i(x + 1, y), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
                     oldX = x;
                     oldY = y;
                 } else if (key.Key == ConsoleKey.S) {
                     y++;
                     y = y > t.Height - 1 ? t.Height - 1 : y;
                     t.SetPixel(new Vector2i(oldX, oldY), new Pixel());
-                    t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                    t.SetPixel(new Vector2i(oldX + 1, oldY), new Pixel());
+                    t.SetPixel(new Vector2i(x, y), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                    t.SetPixel(new Vector2i(x + 1, y), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
                     oldX = x;
                     oldY = y;
                 } else if (key.Key == ConsoleKey.A) {
-                    x--;
+                    x-=2;
                     x = x < 0 ? 0 : x;
                     t.SetPixel(new Vector2i(oldX, oldY), new Pixel());
-                    t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                    t.SetPixel(new Vector2i(oldX + 1, oldY), new Pixel());
+                    t.SetPixel(new Vector2i(x, y), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                    t.SetPixel(new Vector2i(x + 1, y), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
                     oldX = x;
                     oldY = y;
                 } else if (key.Key == ConsoleKey.D) {
-                    x++;
-                    x = x > t.Width - 1 ? t.Width - 1 : x;
+                    x+=2;
+                    x = x > t.Width - 2 ? t.Width - 2 : x;
                     t.SetPixel(new Vector2i(oldX, oldY), new Pixel());
-                    t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                    t.SetPixel(new Vector2i(oldX + 1, oldY), new Pixel());
+                    t.SetPixel(new Vector2i(x, y), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                    t.SetPixel(new Vector2i(x + 1, y), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
                     oldX = x;
                     oldY = y;
                 }

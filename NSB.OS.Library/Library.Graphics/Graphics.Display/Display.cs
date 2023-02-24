@@ -40,7 +40,15 @@ public class Display {
         if (Pixels.Count <= position.Y || Pixels[position.Y].Count <= position.X) {
             AllocatePixels();
         }
+
+        if (position.X < 0 || position.Y < 0 || position.X >= Width || position.Y >= Height) return;
         Pixels[position.Y][position.X] = pixel;
+    }
+
+    public void SetString(Vector2i position, string str, RGB? bg = null, RGB? fg = null) {
+        for (int i = 0; i < str.Length; i++) {
+            SetPixel(new Vector2i(position.X + i, position.Y), new Pixel(str[i], bg, fg));
+        }
     }
 }
 
@@ -85,8 +93,14 @@ public class Renderer {
                 if (pixel.FG != null) {
                     str += pixel.FG?.ToFGESC();
                 }
-                if (pixel.Character == null) pixel.Character = ' ';
-                else str += pixel.Character + "\x1b[0m";
+
+                if (pixel.Character != null) {
+                    str += pixel.Character;
+                } else {
+                    // Red G
+                    str += " ";
+                }
+                str += "\x1b[0m";
             }
             str += "\n";
         }
@@ -95,8 +109,7 @@ public class Renderer {
     }
 
     public void Render() {
-        Console.SetCursorPosition(0, 0);
-        Console.Write(GetDisplayStr());
+        Console.Write("\x1b[2J\x1b[0;0H" + GetDisplayStr());
     }
 
     public Renderer(params Display[] displays) {
