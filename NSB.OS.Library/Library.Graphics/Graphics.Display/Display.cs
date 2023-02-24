@@ -29,7 +29,7 @@ public class Display {
         for (int y = 0; y < Height; y++) {
             if (Pixels.Count <= y) Pixels.Add(new List<Pixel>());
             for (int x = 0; x < Width; x++) {
-                if (Pixels[y].Count <= x) Pixels[y].Add(new Pixel(' '));
+                if (Pixels[y].Count <= x) Pixels[y].Add(new Pixel());
             }
         }
     }
@@ -47,9 +47,9 @@ public class Display {
 public class Pixel {
     public RGB? BG { get; set; }
     public RGB? FG { get; set; }
-    public char Character { get; set; }
+    public char? Character { get; set; }
 
-    public Pixel(char character, RGB? bg = null, RGB? fg = null) {
+    public Pixel(char? character = null, RGB? bg = null, RGB? fg = null) {
         Character = character;
         BG = bg;
         FG = fg;
@@ -65,20 +65,13 @@ public class Renderer {
         foreach (Display display in Displays) {
             display.Update?.Invoke();
             for (int y = 0; y < display.Height; y++) {
-                if (displayStrs.Count <= y) displayStrs.Add(new List<Pixel>());
+                if (displayStrs.Count <= y) 
+                    while (displayStrs.Count <= y) displayStrs.Add(new List<Pixel>());
                 for (int x = 0; x < display.Width; x++) {
                     if (displayStrs[y].Count <= x) displayStrs[y].Add(new Pixel(' '));
-                    displayStrs[y][x] = display.Pixels[y][x];
-                }
-
-                if (displayStrs[y].Count < display.Width) {
-                    for (int i = displayStrs[y].Count; i < display.Width; i++) {
-                        displayStrs[y].Add(new Pixel(' '));
-                    }
-                }
-
-                if (displayStrs[y].Count > display.Width) {
-                    displayStrs[y].RemoveRange(display.Width, displayStrs[y].Count - display.Width);
+                    if (display.Pixels[y][x].BG != null) displayStrs[y][x].BG = display.Pixels[y][x].BG;
+                    if (display.Pixels[y][x].FG != null) displayStrs[y][x].FG = display.Pixels[y][x].FG;
+                    if (display.Pixels[y][x].Character != null) displayStrs[y][x].Character = display.Pixels[y][x].Character;
                 }
             }
         }
@@ -92,7 +85,8 @@ public class Renderer {
                 if (pixel.FG != null) {
                     str += pixel.FG?.ToFGESC();
                 }
-                str += pixel.Character + "\x1b[0m";
+                if (pixel.Character == null) pixel.Character = ' ';
+                else str += pixel.Character + "\x1b[0m";
             }
             str += "\n";
         }

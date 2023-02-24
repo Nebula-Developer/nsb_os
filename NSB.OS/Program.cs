@@ -15,7 +15,7 @@ public static class OS {
         Display t2 = new Display(new Vector2i(0, 2), new Vector2i(5, 5));
         t.SetPixel(new Vector2i(0, 0).ToCharSquare(), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
         t2.SetPixel(new Vector2i(0, 0).ToCharSquare(), new Pixel('X', new RGB(255, 100, 200), new RGB(0, 255, 0)));
-        Renderer r = new Renderer(t2, t);
+        Renderer r = new Renderer(t, t2);
 
         DateTime dt = DateTime.Now;
         List<double> times = new List<double>();
@@ -50,7 +50,9 @@ public static class OS {
 
         t.Update = () => {
             Console.SetCursorPosition(0, 0);
-            times.Add(Math.Round((DateTime.Now - dt).TotalMilliseconds, 2));
+            double time = Math.Round((DateTime.Now - dt).TotalMilliseconds, 2);
+            times.Add(time);
+            if (times.Count > 50) times.RemoveAt(0);
             dt = DateTime.Now;
             double average = getAverage();
             double fps = Math.Round(1000 / average, 2);
@@ -92,28 +94,28 @@ public static class OS {
                 if (key.Key == ConsoleKey.W) {
                     y--;
                     y = y < 0 ? 0 : y;
-                    t.SetPixel(new Vector2i(oldX, oldY), new Pixel(' ', null, new RGB(0, 0, 0)));
+                    t.SetPixel(new Vector2i(oldX, oldY), new Pixel());
                     t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
                     oldX = x;
                     oldY = y;
                 } else if (key.Key == ConsoleKey.S) {
                     y++;
                     y = y > t.Height - 1 ? t.Height - 1 : y;
-                    t.SetPixel(new Vector2i(oldX, oldY), new Pixel(' ', null, new RGB(0, 0, 0)));
+                    t.SetPixel(new Vector2i(oldX, oldY), new Pixel());
                     t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
                     oldX = x;
                     oldY = y;
                 } else if (key.Key == ConsoleKey.A) {
                     x--;
                     x = x < 0 ? 0 : x;
-                    t.SetPixel(new Vector2i(oldX, oldY), new Pixel(' ', null, new RGB(0, 0, 0)));
+                    t.SetPixel(new Vector2i(oldX, oldY), new Pixel());
                     t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
                     oldX = x;
                     oldY = y;
                 } else if (key.Key == ConsoleKey.D) {
                     x++;
                     x = x > t.Width - 1 ? t.Width - 1 : x;
-                    t.SetPixel(new Vector2i(oldX, oldY), new Pixel(' ', null, new RGB(0, 0, 0)));
+                    t.SetPixel(new Vector2i(oldX, oldY), new Pixel());
                     t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
                     oldX = x;
                     oldY = y;
