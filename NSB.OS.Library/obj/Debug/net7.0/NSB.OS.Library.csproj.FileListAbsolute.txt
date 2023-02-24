@@ -1,0 +1,12 @@
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/bin/Debug/net7.0/NSB.OS.Library.deps.json
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/bin/Debug/net7.0/NSB.OS.Library.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/bin/Debug/net7.0/NSB.OS.Library.pdb
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Debug/net7.0/NSB.OS.Library.csproj.AssemblyReference.cache
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Debug/net7.0/NSB.OS.Library.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Debug/net7.0/NSB.OS.Library.AssemblyInfoInputs.cache
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Debug/net7.0/NSB.OS.Library.AssemblyInfo.cs
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Debug/net7.0/NSB.OS.Library.csproj.CoreCompileInputs.cache
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Debug/net7.0/NSB.OS.Library.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Debug/net7.0/refint/NSB.OS.Library.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Debug/net7.0/NSB.OS.Library.pdb
+/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Debug/net7.0/ref/NSB.OS.Library.dll

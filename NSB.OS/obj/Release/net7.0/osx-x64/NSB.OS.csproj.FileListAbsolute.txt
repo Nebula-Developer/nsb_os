@@ -185,8 +185,6 @@
 /Users/nicocook/Documents/nsb_os/NSB.OS/bin/Release/net7.0/osx-x64/libhostpolicy.dylib
 /Users/nicocook/Documents/nsb_os/NSB.OS/bin/Release/net7.0/osx-x64/libmscordaccore.dylib
 /Users/nicocook/Documents/nsb_os/NSB.OS/bin/Release/net7.0/osx-x64/libmscordbi.dylib
-/Users/nicocook/Documents/nsb_os/NSB.OS/bin/Release/net7.0/osx-x64/NSB.OS.Graphics.dll
-/Users/nicocook/Documents/nsb_os/NSB.OS/bin/Release/net7.0/osx-x64/NSB.OS.Graphics.pdb
 /Users/nicocook/Documents/nsb_os/NSB.OS/obj/Release/net7.0/osx-x64/NSB.OS.csproj.AssemblyReference.cache
 /Users/nicocook/Documents/nsb_os/NSB.OS/obj/Release/net7.0/osx-x64/NSB.OS.GeneratedMSBuildEditorConfig.editorconfig
 /Users/nicocook/Documents/nsb_os/NSB.OS/obj/Release/net7.0/osx-x64/NSB.OS.AssemblyInfoInputs.cache
@@ -198,3 +196,5 @@
 /Users/nicocook/Documents/nsb_os/NSB.OS/obj/Release/net7.0/osx-x64/NSB.OS.pdb
 /Users/nicocook/Documents/nsb_os/NSB.OS/obj/Release/net7.0/osx-x64/NSB.OS.genruntimeconfig.cache
 /Users/nicocook/Documents/nsb_os/NSB.OS/obj/Release/net7.0/osx-x64/ref/NSB.OS.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS/bin/Release/net7.0/osx-x64/NSB.OS.Library.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS/bin/Release/net7.0/osx-x64/NSB.OS.Library.pdb

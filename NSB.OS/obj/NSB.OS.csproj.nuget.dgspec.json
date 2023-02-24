@@ -4,14 +4,14 @@
     "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj": {}
   },
   "projects": {
-    "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj": {
+    "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj",
-        "projectName": "NSB.OS.Graphics",
-        "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj",
+        "projectUniqueName": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj",
+        "projectName": "NSB.OS.Library",
+        "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj",
         "packagesPath": "/Users/nicocook/.nuget/packages/",
-        "outputPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/obj/",
+        "outputPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/nicocook/.nuget/NuGet/NuGet.Config"
@@ -79,8 +79,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj": {
-                "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj"
+              "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj": {
+                "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj"
               }
             }
           }

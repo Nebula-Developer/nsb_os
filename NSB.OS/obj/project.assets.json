@@ -2,40 +2,40 @@
   "version": 3,
   "targets": {
     "net7.0": {
-      "NSB.OS.Graphics/1.0.0": {
+      "NSB.OS.Library/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
-          "bin/placeholder/NSB.OS.Graphics.dll": {}
+          "bin/placeholder/NSB.OS.Library.dll": {}
         },
         "runtime": {
-          "bin/placeholder/NSB.OS.Graphics.dll": {}
+          "bin/placeholder/NSB.OS.Library.dll": {}
         }
       }
     },
     "net7.0/osx-x64": {
-      "NSB.OS.Graphics/1.0.0": {
+      "NSB.OS.Library/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
-          "bin/placeholder/NSB.OS.Graphics.dll": {}
+          "bin/placeholder/NSB.OS.Library.dll": {}
         },
         "runtime": {
-          "bin/placeholder/NSB.OS.Graphics.dll": {}
+          "bin/placeholder/NSB.OS.Library.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "NSB.OS.Graphics/1.0.0": {
+    "NSB.OS.Library/1.0.0": {
       "type": "project",
-      "path": "../NSB.OS.Graphics/NSB.OS.Graphics.csproj",
-      "msbuildProject": "../NSB.OS.Graphics/NSB.OS.Graphics.csproj"
+      "path": "../NSB.OS.Library/NSB.OS.Library.csproj",
+      "msbuildProject": "../NSB.OS.Library/NSB.OS.Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "NSB.OS.Graphics >= 1.0.0"
+      "NSB.OS.Library >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -63,8 +63,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj": {
-              "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj"
+            "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj": {
+              "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj"
             }
           }
         }

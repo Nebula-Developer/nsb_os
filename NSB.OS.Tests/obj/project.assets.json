@@ -1809,14 +1809,14 @@
           "build/netcoreapp3.1/xunit.runner.visualstudio.props": {}
         }
       },
-      "NSB.OS.Graphics/1.0.0": {
+      "NSB.OS.Library/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
-          "bin/placeholder/NSB.OS.Graphics.dll": {}
+          "bin/placeholder/NSB.OS.Library.dll": {}
         },
         "runtime": {
-          "bin/placeholder/NSB.OS.Graphics.dll": {}
+          "bin/placeholder/NSB.OS.Library.dll": {}
         }
       }
     }
@@ -6114,35 +6114,35 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "NSB.OS.Graphics/1.0.0": {
+    "NSB.OS.Library/1.0.0": {
       "type": "project",
-      "path": "../NSB.OS.Graphics/NSB.OS.Graphics.csproj",
-      "msbuildProject": "../NSB.OS.Graphics/NSB.OS.Graphics.csproj"
+      "path": "../NSB.OS.Library/NSB.OS.Library.csproj",
+      "msbuildProject": "../NSB.OS.Library/NSB.OS.Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "Microsoft.NET.Test.Sdk >= 17.3.2",
-      "NSB.OS.Graphics >= 1.0.0",
+      "NSB.OS.Library >= 1.0.0",
       "coverlet.collector >= 3.1.2",
       "xunit >= 2.4.2",
       "xunit.runner.visualstudio >= 2.4.5"
     ]
   },
   "packageFolders": {
-    "/home/nebuladev/.nuget/packages/": {}
+    "/Users/nicocook/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/nebuladev/Documents/nsb_os/NSB.OS.Tests/NSB.OS.Tests.csproj",
+      "projectUniqueName": "/Users/nicocook/Documents/nsb_os/NSB.OS.Tests/NSB.OS.Tests.csproj",
       "projectName": "NSB.OS.Tests",
-      "projectPath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Tests/NSB.OS.Tests.csproj",
-      "packagesPath": "/home/nebuladev/.nuget/packages/",
-      "outputPath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Tests/obj/",
+      "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Tests/NSB.OS.Tests.csproj",
+      "packagesPath": "/Users/nicocook/.nuget/packages/",
+      "outputPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/nebuladev/.nuget/NuGet/NuGet.Config"
+        "/Users/nicocook/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -6154,8 +6154,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj": {
-              "projectPath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Graphics/NSB.OS.Graphics.csproj"
+            "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj": {
+              "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj"
             }
           }
         }
@@ -6207,7 +6207,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
       }
     }
   }

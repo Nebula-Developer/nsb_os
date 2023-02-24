@@ -19,7 +19,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <ProjectReference Include="..\NSB.OS.Graphics\NSB.OS.Graphics.csproj" />
+    <ProjectReference Include="..\NSB.OS.Library\NSB.OS.Library.csproj" />
   </ItemGroup>
 
 </Project>

@@ -9,7 +9,7 @@
     ".NETCoreApp,Version=v7.0/osx-x64": {
       "NSB.OS/1.0.0": {
         "dependencies": {
-          "NSB.OS.Graphics": "1.0.0",
+          "NSB.OS.Library": "1.0.0",
           "runtimepack.Microsoft.NETCore.App.Runtime.osx-x64": "7.0.2"
         },
         "runtime": {
@@ -52,9 +52,9 @@
           }
         }
       },
-      "NSB.OS.Graphics/1.0.0": {
+      "NSB.OS.Library/1.0.0": {
         "runtime": {
-          "NSB.OS.Graphics.dll": {}
+          "NSB.OS.Library.dll": {}
         }
       }
     }
@@ -70,7 +70,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "NSB.OS.Graphics/1.0.0": {
+    "NSB.OS.Library/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
