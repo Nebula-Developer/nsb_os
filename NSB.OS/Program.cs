@@ -10,7 +10,7 @@ public static class OS {
     public static void Main(String[] args) {
         Console.WriteLine("This project is not yet functional. Please come back later.");
         NSB.OS.Runtime.Tests.Link.TestLink();
-        Display t = new Display(new Vector2i(5, 5).ToCharSquare(), new Vector2i(10, 10).ToCharSquare());
+        Display t = new Display(new Vector2i(5, 5).ToCharSquare(), new Vector2i(10, 7));
         t.SetPixel(new Vector2i(4, 4).ToCharSquare(), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
         DateTime dt = DateTime.Now;
         List<double> times = new List<double>();
@@ -38,6 +38,10 @@ public static class OS {
         }
 
         Console.CursorVisible = false;
+        Console.Clear();
+
+        int x = 0;
+        int y = 0;
 
         t.Update = () => {
             Console.SetCursorPosition(0, 0);
@@ -60,8 +64,35 @@ public static class OS {
                     Console.CursorVisible = true;
                 }
                 if (key.Key == ConsoleKey.K) {
-                    t.RenderFrequency += 10;
+                    t.RenderFrequency += 5;
                     times.Clear();
+                }
+                if (key.Key == ConsoleKey.J) {
+                    t.UseIdealRenderFrequency = !t.UseIdealRenderFrequency;
+                    times.Clear();
+                }
+                if (key.Key == ConsoleKey.H) {
+                    t.RenderFrequency -= 5;
+                    t.RenderFrequency = t.RenderFrequency <= 0 ? 1 : t.RenderFrequency;
+                    times.Clear();
+                }
+
+                if (key.Key == ConsoleKey.W) {
+                    y--;
+                    y = y < 0 ? 0 : y;
+                    t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                } else if (key.Key == ConsoleKey.S) {
+                    y++;
+                    y = y > t.Height - 1 ? t.Height - 1 : y;
+                    t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                } else if (key.Key == ConsoleKey.A) {
+                    x--;
+                    x = x < 0 ? 0 : x;
+                    t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
+                } else if (key.Key == ConsoleKey.D) {
+                    x++;
+                    x = x > t.Width - 1 ? t.Width - 1 : x;
+                    t.SetPixel(new Vector2i(x, y), new Pixel('X', new RGB(255, 0, 0), new RGB(0, 255, 0)));
                 }
             }
         };

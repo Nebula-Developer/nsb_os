@@ -13,6 +13,7 @@ public class Display {
 
     private List<List<Pixel>> Pixels = new List<List<Pixel>>();
     public int RenderFrequency { get; set; } = 30;
+    public bool UseIdealRenderFrequency { get; set; } = true;
 
     public Display(Vector2i position, Vector2i size) {
         ViewX = position.X;
@@ -61,14 +62,23 @@ public class Display {
             else return;
         }
 
+        DateTime pastRender = DateTime.Now;
+
         renderThread = new System.Threading.Thread(() => {
             bool isRendering = true;
             while (isRendering) {
                 Update();
-                new System.Threading.Thread(() => {
-                    RenderBuffer();
-                }).Start();
-                System.Threading.Thread.Sleep(1000 / RenderFrequency);
+                // new System.Threading.Thread(() => {
+                //     RenderBuffer();
+                // }).Start();
+                RenderBuffer();
+                if (UseIdealRenderFrequency) {
+                    double time = (DateTime.Now - pastRender).TotalMilliseconds;
+                    if (((1000 / RenderFrequency) - time) < 0) time = 0;
+                    System.Threading.Thread.Sleep((int)(1000 / RenderFrequency - time));
+                    pastRender = DateTime.Now;
+                } else System.Threading.Thread.Sleep(1000 / RenderFrequency);
+                
                 renderKill = () => {
                     isRendering = false;
                 };
