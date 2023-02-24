@@ -1,0 +1,7 @@
+/Users/nicocook/Documents/nsb_os/Publish/NSB.OS
+/Users/nicocook/Documents/nsb_os/Publish/NSB.OS.dll
+/Users/nicocook/Documents/nsb_os/Publish/NSB.OS.deps.json
+/Users/nicocook/Documents/nsb_os/Publish/NSB.OS.runtimeconfig.json
+/Users/nicocook/Documents/nsb_os/Publish/NSB.OS.pdb
+/Users/nicocook/Documents/nsb_os/Publish/NSB.OS.Library.dll
+/Users/nicocook/Documents/nsb_os/Publish/NSB.OS.Library.pdb

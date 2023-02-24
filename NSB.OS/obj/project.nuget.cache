@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k4tYG/Vaiav9x7nXAS5jlg15M/oecQi23WPBJ8I3PxXlK6SRQ2z1Jad4LUudeJbfIGY7SlQKJc33juxkCGWZMw==",
+  "dgSpecHash": "hpGYRIY59AiPimwkGwUH8T6nvJftHtIuxZnSkVj1GwNNFywTg1IGACL/5ydW73opNO0atJxCHFebvnN6EeTeNQ==",
   "success": true,
   "projectFilePath": "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
-  "expectedPackageFiles": [
-    "/Users/nicocook/.nuget/packages/microsoft.netcore.app.runtime.osx-x64/7.0.2/microsoft.netcore.app.runtime.osx-x64.7.0.2.nupkg.sha512",
-    "/Users/nicocook/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-x64/7.0.2/microsoft.aspnetcore.app.runtime.osx-x64.7.0.2.nupkg.sha512",
-    "/Users/nicocook/.nuget/packages/microsoft.netcore.app.crossgen2.osx-x64/7.0.2/microsoft.netcore.app.crossgen2.osx-x64.7.0.2.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
