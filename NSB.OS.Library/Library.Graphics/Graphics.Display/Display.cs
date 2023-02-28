@@ -12,9 +12,6 @@ public class Display {
     public int ViewY { get; set; }
 
     public List<List<Pixel>> Pixels = new List<List<Pixel>>();
-    public int RenderFrequency { get; set; } = 30;
-    public bool UseIdealRenderFrequency { get; set; } = true;
-    public bool UseThreadedRender { get; set; } = true;
 
     public Display(Vector2i position, Vector2i size) {
         ViewX = position.X;
@@ -72,14 +69,18 @@ public class Renderer {
 
         foreach (Display display in Displays) {
             display.Update?.Invoke();
-            for (int y = 0; y < display.Height; y++) {
-                if (displayStrs.Count <= y) 
-                    while (displayStrs.Count <= y) displayStrs.Add(new List<Pixel>());
-                for (int x = 0; x < display.Width; x++) {
-                    if (displayStrs[y].Count <= x) displayStrs[y].Add(new Pixel(' '));
-                    if (display.Pixels[y][x].BG != null) displayStrs[y][x].BG = display.Pixels[y][x].BG;
-                    if (display.Pixels[y][x].FG != null) displayStrs[y][x].FG = display.Pixels[y][x].FG;
-                    if (display.Pixels[y][x].Character != null) displayStrs[y][x].Character = display.Pixels[y][x].Character;
+            int yStart = display.ViewY < 0 ? -display.ViewY : 0;
+            int xStart = display.ViewX < 0 ? -display.ViewX : 0;
+            for (int y = yStart; y < display.Height; y++) {
+                if (displayStrs.Count <= y + display.ViewY) while (displayStrs.Count <= y + display.ViewY) displayStrs.Add(new List<Pixel>());
+                for (int x = xStart; x < display.Width; x++) {
+                    int locX = x + display.ViewX;
+                    int locY = y + display.ViewY;
+                    if (displayStrs[locY].Count <= locX) 
+                        while (displayStrs[locY].Count <= locX) displayStrs[locY].Add(new Pixel(' '));
+                    if (display.Pixels[y][x].Character != null) displayStrs[locY][locX].Character = display.Pixels[y][x].Character;
+                    if (display.Pixels[y][x].BG != null) displayStrs[locY][locX].BG = display.Pixels[y][x].BG;
+                    if (display.Pixels[y][x].FG != null) displayStrs[locY][locX].FG = display.Pixels[y][x].FG;
                 }
             }
         }
@@ -123,7 +124,11 @@ public class Renderer {
     public bool UseIdealRenderFrequency { get; set; } = true;
     public bool UseThreadedRender { get; set; } = true;
 
+    public bool IsRendering = false;
+
     public void StartRenderThread(bool overrideThread = false) {
+        IsRendering = true;
+
         if (renderThread != null) {
             if (overrideThread)
                 renderKill?.Invoke();
@@ -133,8 +138,8 @@ public class Renderer {
         DateTime pastRender = DateTime.Now;
 
         renderThread = new System.Threading.Thread(() => {
-            bool isRendering = true;
-            while (isRendering) {
+            bool isLoopRendering = true;
+            while (isLoopRendering) {
                 if (UseThreadedRender) {
                     new System.Threading.Thread(() => {
                         Render();
@@ -151,7 +156,7 @@ public class Renderer {
                 } else System.Threading.Thread.Sleep(1000 / RenderFrequency);
                 
                 renderKill = () => {
-                    isRendering = false;
+                    isLoopRendering = false;
                 };
             }
         });
@@ -160,5 +165,7 @@ public class Renderer {
 
     public void StopRenderThread() {
         renderKill?.Invoke();
+        renderThread = null;
+        IsRendering = false;
     }
 }

@@ -6,6 +6,7 @@
 
 void TestLink() {
     printf("[NSB.OS.Library] Test link from NSB.OS.Library.c\n");
+    fflush(stdout);
 }
 
 void InitTerm() {
