@@ -1,0 +1,12 @@
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/bin/Debug/net7.0/Programs.ProgramA.deps.json
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/bin/Debug/net7.0/Programs.ProgramA.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/bin/Debug/net7.0/Programs.ProgramA.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/obj/Debug/net7.0/Programs.ProgramA.csproj.AssemblyReference.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/obj/Debug/net7.0/Programs.ProgramA.GeneratedMSBuildEditorConfig.editorconfig
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/obj/Debug/net7.0/Programs.ProgramA.AssemblyInfoInputs.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/obj/Debug/net7.0/Programs.ProgramA.AssemblyInfo.cs
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/obj/Debug/net7.0/Programs.ProgramA.csproj.CoreCompileInputs.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/obj/Debug/net7.0/Programs.ProgramA.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/obj/Debug/net7.0/refint/Programs.ProgramA.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/obj/Debug/net7.0/Programs.ProgramA.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.ProgramA/obj/Debug/net7.0/ref/Programs.ProgramA.dll

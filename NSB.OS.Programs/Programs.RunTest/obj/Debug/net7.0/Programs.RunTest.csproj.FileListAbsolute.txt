@@ -1,0 +1,15 @@
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/bin/Debug/net7.0/Programs.RunTest
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/bin/Debug/net7.0/Programs.RunTest.deps.json
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/bin/Debug/net7.0/Programs.RunTest.runtimeconfig.json
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/bin/Debug/net7.0/Programs.RunTest.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/bin/Debug/net7.0/Programs.RunTest.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/obj/Debug/net7.0/Programs.RunTest.csproj.AssemblyReference.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/obj/Debug/net7.0/Programs.RunTest.GeneratedMSBuildEditorConfig.editorconfig
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/obj/Debug/net7.0/Programs.RunTest.AssemblyInfoInputs.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/obj/Debug/net7.0/Programs.RunTest.AssemblyInfo.cs
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/obj/Debug/net7.0/Programs.RunTest.csproj.CoreCompileInputs.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/obj/Debug/net7.0/Programs.RunTest.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/obj/Debug/net7.0/refint/Programs.RunTest.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/obj/Debug/net7.0/Programs.RunTest.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/obj/Debug/net7.0/Programs.RunTest.genruntimeconfig.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Programs/Programs.RunTest/obj/Debug/net7.0/ref/Programs.RunTest.dll
