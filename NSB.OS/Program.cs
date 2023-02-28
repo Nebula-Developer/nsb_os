@@ -14,13 +14,14 @@ public static class OS {
         Link.TestLink();
 
         ThreadManager.ThreadCall(() => {
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            // Create an error:
+            int a = 0;
+            int b = 1 / a;
         }).Then(() => {
             Console.WriteLine("Then");
-        }).Catch(() => {
-            Console.WriteLine("Catch");
-        }).Run();
+        }).Catch((e) => {
+            Console.WriteLine("Catch: " + e.Message);
+        });
 
         Console.WriteLine("After Thread");
         Console.ReadLine();
