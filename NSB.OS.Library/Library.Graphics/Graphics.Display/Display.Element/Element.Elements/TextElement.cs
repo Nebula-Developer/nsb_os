@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using NSB.OS.Graphics.DisplayNS;
 using NSB.OS.Graphics.Mathematics;
 
-namespace NSB.OS.Graphics.PanelNS;
+namespace NSB.OS.Graphics.DisplayNS;
 
 public class TextElement : Element {
     public string Text { get; set; }
@@ -18,10 +18,11 @@ public class TextElement : Element {
         FG = fg;
     }
 
-    public override void Draw(Display display) {
+    public override PixelMap Draw(PixelMap pixels) {
         for (int i = 0; i < Text.Length; i++) {
-            if (X + i < 0 || X + i >= display.Width) continue;
-            display.SetPixel(new Vector2i(X + i, Y), new Pixel(Text[i], BG, FG));
+            if (X + i < 0 || X + i >= pixels.Width) continue;
+            pixels.SetPixel(new Vector2i(X + i, Y), new Pixel(Text[i], BG, FG));
         }
+        return pixels;
     }
 }

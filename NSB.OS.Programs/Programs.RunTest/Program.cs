@@ -6,7 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        string appsDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Apps");
+        string appsDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? AppContext.BaseDirectory, "Apps");
         if (!Directory.Exists(appsDirectory))
         {
             Console.WriteLine("The 'Apps' directory does not exist.");
@@ -37,9 +37,9 @@ class Program
         string selectedAssemblyFile = assemblyFiles[appNumber - 1];
         Assembly selectedAssembly = Assembly.LoadFrom(selectedAssemblyFile);
         
-        Type programAType = selectedAssembly.GetType(selectedAssembly.GetName().Name + ".Program");
-        MethodInfo runMethod = programAType.GetMethod("Run");
-        runMethod.Invoke(null, null);
+        Type? programAType = selectedAssembly.GetType(selectedAssembly.GetName().Name + ".Program");
+        MethodInfo? runMethod = programAType?.GetMethod("Run");
+        if (runMethod != null) runMethod.Invoke(null, null);
         
         Console.WriteLine("Press any key to exit.");
         Console.ReadKey();

@@ -1,0 +1,124 @@
+using NSB.OS.Logic.Threads;
+using System.Diagnostics;
+using System.Threading;
+
+namespace NSB.OS.Graphics.DisplayNS;
+
+public class RendererConfig {
+    public int RenderFrequency { get; set; } = 30;
+    public bool UseIdealRenderFrequency { get; set; } = true;
+    public bool UseThreadedRender { get; set; } = true;
+    public bool UseManagedThreadedRender { get; set; } = true;
+}
+
+public class RendererStack {
+    public List<Display> Displays { get; set; } = new List<Display>();
+    public RendererConfig Config { get; set; } = new RendererConfig();
+    public bool IsRendering { get; private set; } = false;
+
+    public void AddDisplay(Display display) {
+        Displays.Add(display);
+    }
+
+    public void RemoveDisplay(Display display) {
+        Displays.Remove(display);
+    }
+
+    private Pixel[,] CreateAllocatedArray() => new Pixel[Console.WindowHeight, Console.WindowWidth];
+
+    public string GetDisplayStr() {
+        Pixel[,] displayStr = CreateAllocatedArray();
+
+        foreach (Display display in Displays) {
+            PixelMap pixels = display.GetPixels();
+
+            for (int y = 0; y < display.Height; y++) {
+                for (int x = 0; x < display.Width; x++) {
+                    int realY = y + display.ViewY;
+                    int realX = x + display.ViewX;
+
+                    if (realY < 0 || realX < 0 || realY >= displayStr.GetLength(0) || realX >= displayStr.GetLength(1)) continue;
+
+                    displayStr[realY, realX] = pixels.GetPixel(x, y);
+                }
+            }
+        }
+
+        string str = "";
+        for (int y = 0; y < displayStr.GetLength(0); y++) {
+            var isEmptyLine = true;
+            for (int x = 0; x < displayStr.GetLength(1); x++) {
+                if (displayStr[y, x] == null) displayStr[y, x] = new Pixel(' ', null, null);
+                if (displayStr[y, x].Character != ' ' || displayStr[y, x].BG != null || displayStr[y, x].FG != null) isEmptyLine = false;
+                str += displayStr[y, x].ToString();
+            }
+            if (!isEmptyLine) if (y != displayStr.GetLength(0) - 1) str += "\n";
+            else str += "\r\n";
+        }
+
+        return str;
+    }
+
+    public void Render() {
+        Console.Write("\x1b[2J\x1b[0;0H" + GetDisplayStr());
+    }
+
+    public RendererStack(params Display[] displays) {
+        Displays.AddRange(displays);
+    }
+
+    Thread? renderThread;
+    Action? renderKill;
+
+    public void StartRenderThread(bool overrideThread = false) {
+        IsRendering = true;
+
+        if (renderThread != null) {
+            if (overrideThread)
+                renderKill?.Invoke();
+            else return;
+        }
+
+        DateTime pastRender = DateTime.Now;
+
+        renderThread = new Thread(() => {
+            bool isLoopRendering = true;
+            while (isLoopRendering) {
+                if (this.Config.UseThreadedRender) {
+                    if (this.Config.UseManagedThreadedRender) {
+                        ThreadManager.ThreadCall(() => {
+                            this.Render();
+                        }).Catch((e) => {
+                            Console.WriteLine("Failed to render: " + e.ToString());
+                            Environment.Exit(1);
+                        });
+                    } else {
+                        new Thread(() => {
+                            this.Render();
+                        }).Start();
+                    }
+                } else {
+                    this.Render();
+                }
+
+                if (this.Config.UseIdealRenderFrequency) {
+                    double time = (DateTime.Now - pastRender).TotalMilliseconds;
+                    if (((1000 / this.Config.RenderFrequency) - time) < 0) time = 0;
+                    Thread.Sleep((int)(1000 / this.Config.RenderFrequency - time));
+                    pastRender = DateTime.Now;
+                } else Thread.Sleep(1000 / this.Config.RenderFrequency);
+                
+                renderKill = () => {
+                    isLoopRendering = false;
+                };
+            }
+        });
+        renderThread.Start();
+    }
+
+    public void StopRenderThread() {
+        renderKill?.Invoke();
+        renderThread = null;
+        IsRendering = false;
+    }
+}
