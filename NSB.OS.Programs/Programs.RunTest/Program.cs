@@ -36,20 +36,8 @@ class Program
         // Load and execute the selected app's Program.Run() method
         string selectedAssemblyFile = assemblyFiles[appNumber - 1];
         Assembly selectedAssembly = Assembly.LoadFrom(selectedAssemblyFile);
-        /*
-        This is the file:
-        using System;
-
-        namespace Programs.ProgramA;
-
-        public static class ProgramA {
-            public static void Run() {
-                Console.WriteLine("Ran the program!");
-            }
-        }
-        */
-        // We want to execute the Run() method in the ProgramA class in the ProgramA namespace in the Programs namespace in the Programs.ProgramA namespace in the selected assembly
-        Type programAType = selectedAssembly.GetType("Programs.ProgramA.ProgramA");
+        
+        Type programAType = selectedAssembly.GetType(selectedAssembly.GetName().Name + ".Program");
         MethodInfo runMethod = programAType.GetMethod("Run");
         runMethod.Invoke(null, null);
         

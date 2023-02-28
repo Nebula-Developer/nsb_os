@@ -4,6 +4,7 @@ using NSB.OS.Graphics.DisplayNS;
 using NSB.OS.Graphics.Mathematics;
 using NSB.OS.Graphics;
 using NSB.OS.Runtime.Tests;
+using NSB.OS.Runtime.ProgramsNS;
 using NSB.OS.Logic.Threads;
 
 namespace NSB.OS;
@@ -14,9 +15,12 @@ public static class OS {
         Link.TestLink();
 
         ThreadManager.ThreadCall(() => {
-            // Create an error:
-            int a = 0;
-            int b = 1 / a;
+            List<ProgramExecutable> programExecutables = Programs.ListApps();
+            foreach (ProgramExecutable programExecutable in programExecutables) {
+                Console.WriteLine("Running: " + programExecutable.name);
+                int result = Programs.RunProgramExecutable(programExecutable);
+                Console.WriteLine("Result: " + result);
+            }
         }).Then(() => {
             Console.WriteLine("Then");
         }).Catch((e) => {
