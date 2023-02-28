@@ -10,3 +10,15 @@
 /Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/refint/NSB.OS.Library.dll
 /Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/NSB.OS.Library.pdb
 /Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/ref/NSB.OS.Library.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/bin/Release/net7.0/NSB.OS.Library.deps.json
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/bin/Release/net7.0/NSB.OS.Library.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/bin/Release/net7.0/NSB.OS.Library.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/NSB.OS.Library.csproj.AssemblyReference.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/NSB.OS.Library.GeneratedMSBuildEditorConfig.editorconfig
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/NSB.OS.Library.AssemblyInfoInputs.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/NSB.OS.Library.AssemblyInfo.cs
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/NSB.OS.Library.csproj.CoreCompileInputs.cache
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/NSB.OS.Library.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/refint/NSB.OS.Library.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/NSB.OS.Library.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS.Library/obj/Release/net7.0/ref/NSB.OS.Library.dll

@@ -31,3 +31,6 @@
 /Users/nicocook/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.pdb
 /Users/nicocook/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.genruntimeconfig.cache
 /Users/nicocook/Documents/nsb_os/NSB.OS/obj/Release/net7.0/ref/NSB.OS.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS/bin/Release/net7.0/NSB.OS.Library.dll
+/home/nebuladev/Documents/nsb_os/NSB.OS/bin/Release/net7.0/NSB.OS.Library.pdb
+/home/nebuladev/Documents/nsb_os/NSB.OS/obj/Release/net7.0/NSB.OS.csproj.CopyComplete

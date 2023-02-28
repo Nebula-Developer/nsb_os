@@ -4,6 +4,7 @@ using NSB.OS.Graphics.DisplayNS;
 using NSB.OS.Graphics.Mathematics;
 using NSB.OS.Graphics;
 using NSB.OS.Runtime.Tests;
+using NSB.OS.Logic.Threads;
 
 namespace NSB.OS;
 
@@ -11,6 +12,19 @@ public static class OS {
     public static void Main(String[] args) {
         Console.WriteLine("This project is not yet functional. Please come back later.");
         Link.TestLink();
+
+        ThreadManager.ThreadCall(() => {
+            Console.WriteLine("Hello World!");
+            Console.ReadKey();
+        }).Then(() => {
+            Console.WriteLine("Then");
+        }).Catch(() => {
+            Console.WriteLine("Catch");
+        }).Run();
+
+        Console.WriteLine("After Thread");
+        Console.ReadLine();
+
         Display t = new Display(new Vector2i(0, 2), new Vector2i(20, 20).ToCharSquare());
         Display t2 = new Display(new Vector2i(0, 2), new Vector2i(17, 10).ToCharSquare());
         t.SetPixel(new Vector2i(0, 0), new Pixel(' ', new RGB(255, 0, 0), new RGB(0, 255, 0)));
