@@ -15,8 +15,12 @@ public static class OS {
         Display d = new Display(new Vector2i(0, 0), new Vector2i(Console.WindowWidth, Console.WindowHeight - 1));
         TextElement a = new TextElement(0, 0, "Hello World!");
         Rectangle rect = new Rectangle(0, 0, 10, 10, new RGB(0, 0, 0), new RGB(255, 255, 255));
+        VerticalTextElement vert = new VerticalTextElement(0, 0, "Hello World!", new RGB(0, 0, 0), new RGB(255, 255, 255));
+        BarElement bar = new BarElement(0, 0, 5, 0, new RGB(0, 255, 0), new RGB(255, 255, 255));
         d.AddElement(rect);
         d.AddElement(a);
+        d.AddElement(vert);
+        d.AddElement(bar);
 
         RendererConfig conf = new RendererConfig() {
             UseThreadedRender = false,

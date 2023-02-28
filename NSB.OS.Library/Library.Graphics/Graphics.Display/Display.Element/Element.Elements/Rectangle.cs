@@ -19,6 +19,15 @@ public class Rectangle : Element {
         FG = fg;
     }
 
+    public Rectangle(Vector2i pos, int width, int height, RGB? bg = null, RGB? fg = null) {
+        this.X = pos.X;
+        this.Y = pos.Y;
+        Width = width;
+        Height = height;
+        BG = bg;
+        FG = fg;
+    }
+    
     public override PixelMap Draw(PixelMap pixels) {
         for (int y = 0; y < Height; y++) {
             for (int x = 0; x < Width; x++) {

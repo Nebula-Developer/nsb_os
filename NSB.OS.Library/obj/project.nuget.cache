@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8jnutWYi65ryFuaiCl0eIAQa5NJCi1OIk2oHOQaWvsXX30XHDnayISviI06SkzhsNtHfFMjt6IRV0RzjFuFWuA==",
+  "dgSpecHash": "aQdoYI87g3NF1zewU3DDeIX8CeL1KQsDp4qGUMogTmVCJbPxQKqX1vXA3upy2JR5cqsMoTiWb3qvmGycwKfMqg==",
   "success": true,
-  "projectFilePath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj",
+  "projectFilePath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
