@@ -52,6 +52,7 @@ public class RendererStack {
                 if (displayStr[y, x].Character != ' ' || displayStr[y, x].BG != null || displayStr[y, x].FG != null) isEmptyLine = false;
                 str += displayStr[y, x].ToString();
             }
+            while (str.EndsWith(" ")) str = str.Substring(0, str.Length - 1);
             if (!isEmptyLine) if (y != displayStr.GetLength(0) - 1) str += "\n";
             else str += "\r\n";
         }
@@ -60,15 +61,18 @@ public class RendererStack {
     }
 
     public void Render() {
-        Console.Write("\x1b[2J\x1b[0;0H" + GetDisplayStr());
+        Console.Write("\x1b[0;0H" + GetDisplayStr());
     }
 
     public RendererStack(params Display[] displays) {
         Displays.AddRange(displays);
     }
 
-    Thread? renderThread;
-    Action? renderKill;
+    private Thread? renderThread;
+    private Action? renderKill;
+    private DateTime fpsPast = DateTime.Now;
+    private DateTime fpsNow = DateTime.Now;
+    public int FPS = 0;
 
     public void StartRenderThread(bool overrideThread = false) {
         IsRendering = true;
@@ -84,6 +88,8 @@ public class RendererStack {
         renderThread = new Thread(() => {
             bool isLoopRendering = true;
             while (isLoopRendering) {
+                fpsNow = DateTime.Now;
+
                 if (this.Config.UseThreadedRender) {
                     if (this.Config.UseManagedThreadedRender) {
                         ThreadManager.ThreadCall(() => {
@@ -111,6 +117,9 @@ public class RendererStack {
                 renderKill = () => {
                     isLoopRendering = false;
                 };
+
+                fpsPast = DateTime.Now;
+                FPS = (int)(1000 / (fpsPast - fpsNow).TotalMilliseconds);
             }
         });
         renderThread.Start();
