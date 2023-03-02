@@ -20,6 +20,9 @@ public static class OS {
         }, new RGB(255, 100, 255), null);
         d.AddElement(b);
 
+        BarElement bar = new BarElement(0, 0, 10, 10, new RGB(255, 0, 0), new RGB(0, 255, 0));
+        d.AddElement(bar);
+
         PointRange range = new PointRange(0, 0, null);
         d.AddElement(range);
 
@@ -42,14 +45,14 @@ public static class OS {
                 r.StopRenderThread();
             }
             
-            if (key == ConsoleKey.UpArrow) { b.end.Y--; }
-            if (key == ConsoleKey.DownArrow) { b.end.Y++; }
-            if (key == ConsoleKey.LeftArrow) { b.end.X--; }
-            if (key == ConsoleKey.RightArrow) { b.end.X++; }
-            if (key == ConsoleKey.Y) { b.Y--; b.end.Y++; }
-            if (key == ConsoleKey.H) { b.Y++; b.end.Y--; }
-            if (key == ConsoleKey.G) { b.X--; b.end.X++; }
-            if (key == ConsoleKey.J) { b.X++; b.end.X--; }
+            if (key == ConsoleKey.UpArrow) { bar.end.Y--; }
+            if (key == ConsoleKey.DownArrow) { bar.end.Y++; }
+            if (key == ConsoleKey.LeftArrow) { bar.end.X--; }
+            if (key == ConsoleKey.RightArrow) { bar.end.X++; }
+            if (key == ConsoleKey.Y) { bar.start.Y--; }
+            if (key == ConsoleKey.H) { bar.start.Y++; }
+            if (key == ConsoleKey.G) { bar.start.X--; }
+            if (key == ConsoleKey.J) { bar.start.X++; }
 
             if (key == ConsoleKey.O) {
                 selectedBezeirPoint++;

@@ -37,7 +37,6 @@ public class BezeirBarElement : Element {
         for (int i = 1; i < newPoints.Length; i++)
         {
             newPoints[i] = new Vector2(points[i - 1].X, points[i - 1].Y);
-            pixels = new PointElement((int)newPoints[i].X, (int)newPoints[i].Y + 1, new RGB(0, 255, 0), FG).Draw(pixels);
         }
 
         while (t <= 1)
@@ -49,7 +48,7 @@ public class BezeirBarElement : Element {
             }
             current += new Vector2(end.X, end.Y) * (float)Math.Pow(1 - t, newPoints.Length) * (float)Math.Pow(t, 0);
             Vector2i currenti = new Vector2i((int)current.X, (int)current.Y);
-            pixels.SetPixel(this, currenti, new Pixel(' ', BG, FG));
+            pixels.SetPixel(this, currenti, new Pixel(' ', BG?.Lerp(new RGB(255, 255, 255), t), FG));
             t += 0.01f;
         }
         return pixels;

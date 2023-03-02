@@ -29,4 +29,18 @@ public class RGB {
     public override string ToString() {
         return $"({R}, {G}, {B})";
     }
+
+    public RGB Lerp(RGB other, float t) {
+        return new RGB(
+            (int)(R + (other.R - R) * t),
+            (int)(G + (other.G - G) * t),
+            (int)(B + (other.B - B) * t)
+        );
+    }
+
+    public static RGB operator +(RGB a, RGB b) => new RGB(a.R + b.R, a.G + b.G, a.B + b.B);
+    public static RGB operator -(RGB a, RGB b) => new RGB(a.R - b.R, a.G - b.G, a.B - b.B);
+    public static RGB operator *(RGB a, RGB b) => new RGB(a.R * b.R, a.G * b.G, a.B * b.B);
+    public static RGB operator /(RGB a, RGB b) => new RGB(a.R / b.R, a.G / b.G, a.B / b.B);
+    public static RGB operator %(RGB a, RGB b) => new RGB(a.R % b.R, a.G % b.G, a.B % b.B);
 }

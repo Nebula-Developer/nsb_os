@@ -12,6 +12,7 @@ public class PixelMap {
     public PixelMap(int width, int height) {
         Width = width;
         Height = height;
+        
         Pixels = new Pixel[Width, Height];
         for (int y = 0; y < Height; y++)
             for (int x = 0; x < Width; x++)
