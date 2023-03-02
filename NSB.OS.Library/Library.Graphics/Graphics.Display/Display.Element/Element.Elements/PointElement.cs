@@ -1,6 +1,3 @@
-
-using System.Collections.Generic;
-using NSB.OS.Graphics.DisplayNS;
 using NSB.OS.Graphics.Mathematics;
 
 namespace NSB.OS.Graphics.DisplayNS;

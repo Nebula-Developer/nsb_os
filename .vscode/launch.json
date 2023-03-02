@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/NSB.OS/bin/Debug/net7.0/osx-x64/NSB.OS.dll",
+            "program": "${workspaceFolder}/NSB.OS/bin/Debug/net7.0/NSB.OS",
             "args": [],
             "cwd": "${workspaceFolder}/NSB.OS",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
