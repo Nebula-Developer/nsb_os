@@ -9,72 +9,16 @@ namespace NSB.OS;
 
 public static class OS {
     public static void Main(String[] args) {
-        Console.CursorVisible = false;
-        Link.TestLink();
+        Display home = new Display(new Vector2i(0, 0), new Vector2i(80, 25));
+        Rectangle bg = new Rectangle(0, 0, 80, 25, new RGB(0, 0, 0), new RGB(0, 100, 255));
+        home.AddElement(bg);
+        TextElement t = new TextElement(0, 0, "NSB_OS", null, null);
+        home.AddElement(t);
 
-        Display d = new Display(new Vector2i(0, 0), new Vector2i(Console.WindowWidth, Console.WindowHeight - 1));
+        RendererStack renderer = new RendererStack();
+        renderer.AddDisplay(home);
+        renderer.Render();
 
-        BezeirBarElement b = new BezeirBarElement(3, 3, 3, 3, new Vector2i[] {
-            new Vector2i(0, 0),
-            new Vector2i(0, 0)
-        }, new RGB(255, 100, 255), null);
-        d.AddElement(b);
-
-        BarElement bar = new BarElement(0, 0, 10, 10, new RGB(255, 0, 0), new RGB(0, 255, 0));
-        d.AddElement(bar);
-
-        PointRange range = new PointRange(0, 0, null);
-        d.AddElement(range);
-
-        RendererConfig conf = new RendererConfig() {
-            RenderFrequency = 60
-        };
-
-        RendererStack r = new RendererStack();
-        r.Config = conf;
-        r.AddDisplay(d);
-        // r.StartRenderThread(true);
-        int selectedBezeirPoint = 0;
-        
-        while (true) {
-            r.Render();
-            ConsoleKey? key = null;
-            key = Console.ReadKey(true).Key;
-
-            if (key == ConsoleKey.Escape) {
-                r.StopRenderThread();
-            }
-            
-            if (key == ConsoleKey.UpArrow) { bar.end.Y--; }
-            if (key == ConsoleKey.DownArrow) { bar.end.Y++; }
-            if (key == ConsoleKey.LeftArrow) { bar.end.X--; }
-            if (key == ConsoleKey.RightArrow) { bar.end.X++; }
-            if (key == ConsoleKey.Y) { bar.start.Y--; }
-            if (key == ConsoleKey.H) { bar.start.Y++; }
-            if (key == ConsoleKey.G) { bar.start.X--; }
-            if (key == ConsoleKey.J) { bar.start.X++; }
-
-            if (key == ConsoleKey.O) {
-                selectedBezeirPoint++;
-                if (selectedBezeirPoint >= b.points.Length) selectedBezeirPoint = 0;
-            }
-
-            if (key == ConsoleKey.L) {
-                selectedBezeirPoint--;
-                if (selectedBezeirPoint < 0) selectedBezeirPoint = b.points.Length - 1;
-            }
-
-            if (key == ConsoleKey.W) { b.points[selectedBezeirPoint].Y--; }
-            if (key == ConsoleKey.S) { b.points[selectedBezeirPoint].Y++; }
-            if (key == ConsoleKey.A) { b.points[selectedBezeirPoint].X--; }
-            if (key == ConsoleKey.D) { b.points[selectedBezeirPoint].X++; }
-
-            List<PointElement> p = new List<PointElement>(b.points.Length);
-            for (int i = 0; i < b.points.Length; i++) {
-                p.Add(new PointElement(b.points[i].X, b.points[i].Y, selectedBezeirPoint == i ? new RGB(255, 255, 255) : new RGB(255, 0, 0)));
-            }
-
-            range.Points = p;
-        }
+        Console.ReadLine();
     }
 }
