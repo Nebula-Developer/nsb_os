@@ -26,7 +26,7 @@ public class RendererStack {
 
     private Pixel[,] CreateAllocatedArray() => new Pixel[Console.WindowHeight, Console.WindowWidth];
 
-    public string GetDisplayStr() {
+    public Pixel[,] GetDisplayData() {
         Pixel[,] displayStr = CreateAllocatedArray();
 
         foreach (Display display in Displays) {
@@ -44,24 +44,32 @@ public class RendererStack {
             }
         }
 
-        string str = "";
-        for (int y = 0; y < displayStr.GetLength(0); y++) {
-            var isEmptyLine = true;
-            for (int x = 0; x < displayStr.GetLength(1); x++) {
-                if (displayStr[y, x] == null) displayStr[y, x] = new Pixel(' ', null, null);
-                if (displayStr[y, x].Character != ' ' || displayStr[y, x].BG != null || displayStr[y, x].FG != null) isEmptyLine = false;
-                str += displayStr[y, x].ToString();
-            }
-            while (str.EndsWith(" ")) str = str.Substring(0, str.Length - 1);
-            if (!isEmptyLine) if (y != displayStr.GetLength(0) - 1) str += "\n";
-            else str += "\r\n";
-        }
-
-        return str;
+        return displayStr;
     }
 
+    private Pixel[,] oldBuffer = new Pixel[0, 0];
+
     public void Render() {
-        Console.Write("\x1b[0;0H" + GetDisplayStr());
+        Pixel[,] buffer = GetDisplayData();
+        // Get the differences and only print what we have to
+        Console.Write("\x1b[0;0H");
+
+        for (int y = 0; y < buffer.GetLength(0); y++) {
+            for (int x = 0; x < buffer.GetLength(1); x++) {
+                // Make sure we are in bounds
+                if (y >= oldBuffer.GetLength(0) || x >= oldBuffer.GetLength(1)) {
+                    if (y >= buffer.GetLength(0) || x >= buffer.GetLength(1) || buffer[y, x] == null) continue;
+                    Console.SetCursorPosition(x, y);
+                    Console.Write(buffer[y, x].ToString());
+                    continue;
+                }
+                if (buffer[y, x] != oldBuffer[y, x]) {
+                    Console.SetCursorPosition(x, y);
+                    Console.Write(buffer[y, x].ToString());
+                }
+            }
+        }
+        oldBuffer = buffer;
     }
 
     public RendererStack(params Display[] displays) {

@@ -21,4 +21,8 @@ public class Pixel {
     public override string ToString() {
         return $"{ToBGEsc()}{ToFGEsc()}{Character ?? ' '}\x1b[0m";   
     }
+
+    // == and !=
+    public static bool operator ==(Pixel a, Pixel b) => a?.Character == b?.Character && a?.BG == b?.BG && a?.FG == b?.FG;
+    public static bool operator !=(Pixel a, Pixel b) => a?.Character != b?.Character || a?.BG != b?.BG || a?.FG != b?.FG;
 }
