@@ -30,15 +30,13 @@ public static class OS {
         RendererStack r = new RendererStack();
         r.Config = conf;
         r.AddDisplay(d);
-        r.StartRenderThread(true);
+        // r.StartRenderThread(true);
         int selectedBezeirPoint = 0;
         
-        while (r.IsRendering) {
+        while (true) {
+            r.Render();
             ConsoleKey? key = null;
-
-            if (Console.KeyAvailable) {
-                key = Console.ReadKey(true).Key;
-            }
+            key = Console.ReadKey(true).Key;
 
             if (key == ConsoleKey.Escape) {
                 r.StopRenderThread();
@@ -70,9 +68,6 @@ public static class OS {
             }
 
             range.Points = p;
-
-
-            Thread.Sleep(2);
         }
     }
 }
