@@ -14,7 +14,7 @@ public static class OS {
 
         Display d = new Display(new Vector2i(0, 0), new Vector2i(Console.WindowWidth, Console.WindowHeight - 1));
 
-        BezeirBarElement b = new BezeirBarElement(0, 0, 10, 10, new Vector2i[] {
+        BezeirBarElement b = new BezeirBarElement(3, 3, 3, 3, new Vector2i[] {
             new Vector2i(0, 0),
             new Vector2i(0, 0)
         }, new RGB(255, 100, 255), null);
@@ -42,10 +42,14 @@ public static class OS {
                 r.StopRenderThread();
             }
             
-            if (key == ConsoleKey.UpArrow) { b.start.Y--; }
-            if (key == ConsoleKey.DownArrow) { b.start.Y++; }
-            if (key == ConsoleKey.LeftArrow) { b.start.X--; }
-            if (key == ConsoleKey.RightArrow) { b.start.X++; }
+            if (key == ConsoleKey.UpArrow) { b.end.Y--; }
+            if (key == ConsoleKey.DownArrow) { b.end.Y++; }
+            if (key == ConsoleKey.LeftArrow) { b.end.X--; }
+            if (key == ConsoleKey.RightArrow) { b.end.X++; }
+            if (key == ConsoleKey.Y) { b.Y--; b.end.Y++; }
+            if (key == ConsoleKey.H) { b.Y++; b.end.Y--; }
+            if (key == ConsoleKey.G) { b.X--; b.end.X++; }
+            if (key == ConsoleKey.J) { b.X++; b.end.X--; }
 
             if (key == ConsoleKey.O) {
                 selectedBezeirPoint++;

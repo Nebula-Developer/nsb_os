@@ -9,6 +9,8 @@ public class BezeirBarElement : Element {
     public RGB? FG { get; set; }
 
     public BezeirBarElement(int x, int y, int x2, int y2, Vector2i[]? points = null, RGB? bg = null, RGB? fg = null) {
+        X = x;
+        Y = y;
         start = new Vector2i(x, y);
         end = new Vector2i(x2, y2);
         this.points = points ?? new Vector2i[0];
@@ -17,6 +19,8 @@ public class BezeirBarElement : Element {
     }
 
     public BezeirBarElement(Vector2i startPos, Vector2i endPos, Vector2i[]? points = null, RGB? bg = null, RGB? fg = null) {
+        X = startPos.X;
+        Y = startPos.Y;
         start = startPos;
         end = endPos;
         this.points = points ?? new Vector2i[0];
@@ -33,6 +37,7 @@ public class BezeirBarElement : Element {
         for (int i = 1; i < newPoints.Length; i++)
         {
             newPoints[i] = new Vector2(points[i - 1].X, points[i - 1].Y);
+            pixels = new PointElement((int)newPoints[i].X, (int)newPoints[i].Y + 1, new RGB(0, 255, 0), FG).Draw(pixels);
         }
 
         while (t <= 1)
