@@ -28,7 +28,7 @@ public class VerticalTextElement : Element {
     public override PixelMap Draw(PixelMap pixels) {
         for (int i = 0; i < Text.Length; i++) {
             if (Y + i < 0 || Y + i >= pixels.Height) continue;
-            pixels.SetPixel(new Vector2i(X, Y + i), new Pixel(Text[i], BG, FG));
+            pixels.SetPixel(this, new Vector2i(X, Y + i), new Pixel(Text[i], BG, FG));
         }
         return pixels;
     }

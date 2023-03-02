@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj": {}
+    "/home/nebuladev/Documents/nsb_os/NSB.OS/NSB.OS.csproj": {}
   },
   "projects": {
-    "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj": {
+    "/home/nebuladev/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj",
+        "projectUniqueName": "/home/nebuladev/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj",
         "projectName": "NSB.OS.Library",
-        "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj",
-        "packagesPath": "/Users/nicocook/.nuget/packages/",
-        "outputPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/",
+        "projectPath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj",
+        "packagesPath": "/home/nebuladev/.nuget/packages/",
+        "outputPath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Library/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/nicocook/.nuget/NuGet/NuGet.Config"
+          "/home/nebuladev/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -53,21 +53,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj": {
+    "/home/nebuladev/Documents/nsb_os/NSB.OS/NSB.OS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
+        "projectUniqueName": "/home/nebuladev/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
         "projectName": "NSB.OS",
-        "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
-        "packagesPath": "/Users/nicocook/.nuget/packages/",
-        "outputPath": "/Users/nicocook/Documents/nsb_os/NSB.OS/obj/",
+        "projectPath": "/home/nebuladev/Documents/nsb_os/NSB.OS/NSB.OS.csproj",
+        "packagesPath": "/home/nebuladev/.nuget/packages/",
+        "outputPath": "/home/nebuladev/Documents/nsb_os/NSB.OS/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/nicocook/.nuget/NuGet/NuGet.Config"
+          "/home/nebuladev/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -79,8 +79,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj": {
-                "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj"
+              "/home/nebuladev/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj": {
+                "projectPath": "/home/nebuladev/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj"
               }
             }
           }
@@ -110,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -18,8 +18,17 @@ public class PixelMap {
                 Pixels[x, y] = new Pixel(' ', null, null);
     }
 
-    public void SetPixel(Vector2i position, Pixel pixel) => Pixels[position.X, position.Y] = pixel;
-    public void SetPixel(int x, int y, Pixel pixel) => Pixels[x, y] = pixel;
+    public void SetPixel(Element element, Vector2i position, Pixel pixel) {
+        if (element.X + position.X < 0 || element.X + position.X >= Width) return;
+        if (element.Y + position.Y < 0 || element.Y + position.Y >= Height) return;
+        Pixels[element.X + position.X, element.Y + position.Y] = pixel;
+    }
+
+    public void SetPixel(Vector2i position, Pixel pixel) {
+        if (position.X < 0 || position.X >= Width) return;
+        if (position.Y < 0 || position.Y >= Height) return;
+        Pixels[position.X, position.Y] = pixel;
+    }
 
     public Pixel GetPixel(Vector2i position) => Pixels[position.X, position.Y];
     public Pixel GetPixel(int x, int y) => Pixels[x, y];

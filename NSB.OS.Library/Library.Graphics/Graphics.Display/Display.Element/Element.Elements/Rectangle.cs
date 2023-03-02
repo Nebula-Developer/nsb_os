@@ -31,8 +31,7 @@ public class Rectangle : Element {
     public override PixelMap Draw(PixelMap pixels) {
         for (int y = 0; y < Height; y++) {
             for (int x = 0; x < Width; x++) {
-                if (X + x < 0 || X + x >= pixels.Width || Y + y < 0 || Y + y >= pixels.Height) continue;
-                pixels.SetPixel(new Vector2i(X + x, Y + y), new Pixel(' ', BG, FG));
+                pixels.SetPixel(this, new Vector2i(x, y), new Pixel(' ', BG, FG));
             }
         }
         return pixels;
