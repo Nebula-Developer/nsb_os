@@ -33,17 +33,27 @@ public static class Programs {
         return programExecutables;
     }
 
-    public static int RunProgramExecutable(ProgramExecutable programExecutable) {
+    public static ProgramReturn RunProgramExecutable(ProgramExecutable programExecutable) {
         Type? programAType = programExecutable.assembly.GetType(programExecutable.assembly.GetName().Name + ".Program");
         MethodInfo? runMethod = programAType?.GetMethod("Run");
         
-        if (programAType == null || runMethod == null) return -1;
+        if (programAType == null || runMethod == null) return new ProgramReturn(1, new Exception("Program: " + programExecutable.name + " does not have a Program.Run() method."));
 
         try {
-            runMethod.Invoke(null, null);
-            return 0;
-        } catch {
-            return -1;
+            object? a = runMethod.Invoke(null, null);
+            return new ProgramReturn(0, null);
+        } catch (TargetInvocationException e) {
+            return new ProgramReturn(1, e.InnerException);
         }
+    }
+}
+
+public class ProgramReturn {
+    public int exitCode;
+    public Exception? exception;
+
+    public ProgramReturn(int exitCode, Exception? exception) {
+        this.exitCode = exitCode;
+        this.exception = exception;
     }
 }

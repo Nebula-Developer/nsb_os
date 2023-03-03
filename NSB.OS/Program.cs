@@ -81,13 +81,44 @@ public static class OS {
                     textEnd--;
                     
                     if (cursor.X >= textStart && cursor.X <= textEnd) {
+                        // Switch to scrollback
+                        Console.Write("\x1b[?1049h");
                         Console.Clear();
                         Console.CursorVisible = true;
-                        Programs.RunProgramExecutable(apps[cursorRelativeY]);
+                        ProgramReturn programReturn = Programs.RunProgramExecutable(apps[cursorRelativeY]);
 
-                        Console.Write("\n\nProcess exited. Press any key to continue... ");
+                        if (programReturn.exitCode == 0) {
+                            Console.Write("\n\nProcess exited (ext:0). Press any key to continue...");
+                        } else if (programReturn.exitCode == 1) {
+                            string[] oops = new string[] {
+                                "Oops!",
+                                "Well, that's embarrassing.",
+                                "Oh no!",
+                                "My bad, let me fix that.",
+                                "Nope, that's not right.",
+                                "Did I do that?",
+                                "I spoke too soon.",
+                                "My apologies.",
+                                "Eek, that wasn't supposed to happen.",
+                                "Looks like I made a mistake.",
+                                "Uh-oh, let's try that again.",
+                                "My mistake, sorry about that.",
+                                "Well, that's not ideal.",
+                                "That didn't go as planned."
+                            };
+
+                            Console.WriteLine("\n\n" + oops[new Random().Next(oops.Length)]);
+                            Console.WriteLine("Process crashed (ext:1). More details below.");
+                            Console.WriteLine(programReturn.exception);
+                            Console.WriteLine("Plain error: " + programReturn.exception?.Message);
+                            Console.WriteLine("Error type: " + programReturn.exception?.GetType().ToString());
+                            Console.WriteLine("Press any key to continue...");
+                        } else {
+                            Console.Write("\n\nProcess exited (ext:{0}). Press any key to continue...", programReturn.exitCode);
+                        }
                         Console.ReadKey(true);
                         Console.CursorVisible = false;
+                        Console.Write("\x1b[?1049l");
                         renderer.Render(true);
                     }
                 }

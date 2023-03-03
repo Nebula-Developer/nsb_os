@@ -57,7 +57,8 @@ public class RendererStack {
 
         for (int y = 0; y < buffer.GetLength(0); y++) {
             for (int x = 0; x < buffer.GetLength(1); x++) {
-                if (buffer[y, x] == null) continue;
+                Pixel nullPixel = new Pixel();
+                if (buffer[y, x] == nullPixel) continue;
                 string toString = buffer[y, x].ToString();
                 if (drawAll) {
                     Console.Write(toString);

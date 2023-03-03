@@ -25,4 +25,6 @@ public class Pixel {
     // == and !=
     public static bool operator ==(Pixel a, Pixel b) => a?.Character == b?.Character && a?.BG == b?.BG && a?.FG == b?.FG;
     public static bool operator !=(Pixel a, Pixel b) => a?.Character != b?.Character || a?.BG != b?.BG || a?.FG != b?.FG;
+    public override bool Equals(object? obj) => obj is Pixel pixel && this == pixel;
+    public override int GetHashCode() => HashCode.Combine(BG, FG, Character);
 }
