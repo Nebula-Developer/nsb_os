@@ -4,6 +4,7 @@ using NSB.OS.Graphics;
 using NSB.OS.Graphics.DisplayNS;
 using NSB.OS.Graphics.Mathematics;
 using NSB.OS.Runtime.Tests;
+using NSB.OS.Runtime.ProgramsNS;
 
 namespace NSB.OS;
 
@@ -23,6 +24,15 @@ public static class OS {
         home.AddElement(r);
         OutlineElement o = new OutlineElement(0, 0, width, height, new RGB(0, 0, 0), new RGB(0, 100, 255));
         home.AddElement(o);
+
+        List<ProgramExecutable> apps = Programs.ListApps();
+        List<CenteredTextElement> appTexts = new List<CenteredTextElement>();
+        for (int i = 0; i < apps.Count; i++) {
+            CenteredTextElement appText = new CenteredTextElement(0, i + 3, apps[i].name, width, null, null);
+            appTexts.Add(appText);
+            home.AddElement(appText);
+        }
+
         CharElement cursor = new CharElement(0, 0, 'X', null, new RGB(50, 100, 255));
         home.AddElement(cursor);
 
@@ -59,7 +69,26 @@ public static class OS {
                 cursor.Character = fadeChars[cursorIndex];
             }
 
-            t.Text = $"X: {cursor.X}, Y: {cursor.Y}";
+            if (key.Key == ConsoleKey.Spacebar) {
+                int cursorRelativeY = cursor.Y - 6;
+                if (cursorRelativeY >= 0 && cursorRelativeY < apps.Count) {
+                    int textLength = apps[cursorRelativeY].name.Length;
+                    int textStart = (width / 2) - (textLength / 2) - 1;
+                    int textEnd = textStart + textLength - 1;
+                    if (cursor.X >= textStart && cursor.X <= textEnd) {
+                        Console.Clear();
+                        Console.CursorVisible = true;
+                        Programs.RunProgramExecutable(apps[cursorRelativeY]);
+
+                        Console.Write("\n\nProcess exited. Press any key to continue... ");
+                        Console.ReadKey(true);
+                        Console.CursorVisible = false;
+                        renderer.Render(true);
+                    }
+                }
+            }
+
+            // t.Text = $"X: {cursor.X}, Y: {cursor.Y}";
 
             renderer.Render();
         }
