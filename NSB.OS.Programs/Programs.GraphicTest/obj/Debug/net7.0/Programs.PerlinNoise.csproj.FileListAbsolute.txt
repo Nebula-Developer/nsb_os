@@ -1,0 +1,15 @@
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/obj/Debug/net7.0/Programs.PerlinNoise.csproj.AssemblyReference.cache
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/obj/Debug/net7.0/Programs.PerlinNoise.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/obj/Debug/net7.0/Programs.PerlinNoise.AssemblyInfoInputs.cache
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/obj/Debug/net7.0/Programs.PerlinNoise.AssemblyInfo.cs
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/obj/Debug/net7.0/Programs.PerlinNoise.csproj.CoreCompileInputs.cache
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/bin/Debug/net7.0/Programs.PerlinNoise.deps.json
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/bin/Debug/net7.0/Programs.PerlinNoise.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/bin/Debug/net7.0/Programs.PerlinNoise.pdb
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/bin/Debug/net7.0/NSB.OS.Library.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/bin/Debug/net7.0/NSB.OS.Library.pdb
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/obj/Debug/net7.0/Programs.PerlinNoise.csproj.CopyComplete
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/obj/Debug/net7.0/Programs.PerlinNoise.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/obj/Debug/net7.0/refint/Programs.PerlinNoise.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/obj/Debug/net7.0/Programs.PerlinNoise.pdb
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.PerlinNoise/obj/Debug/net7.0/ref/Programs.PerlinNoise.dll

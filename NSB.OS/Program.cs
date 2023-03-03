@@ -16,13 +16,13 @@ public static class OS {
         Console.Clear();
 
         Display home = new Display(new Vector2i(0, 0), new Vector2i(width, height));
-        RectangleElement bg = new RectangleElement(0, 0, width, height, new RGB(0, 0, 0), new RGB(0, 100, 255));
+        RectangleElement bg = new RectangleElement(0, 0, width, height, new RGB(0, 0, 0), new RGB(255, 160, 255));
         home.AddElement(bg);
         CenteredTextElement t = new CenteredTextElement(0, 1, "NSB_OS", width, null, null);
         home.AddElement(t);
-        TextBarElement r = new TextBarElement(4, 2, width - 5, 2, '─', new RGB(0, 0, 0), new RGB(0, 100, 255));
+        TextBarElement r = new TextBarElement(4, 2, width - 5, 2, '─', new RGB(0, 0, 0), new RGB(120, 0, 255));
         home.AddElement(r);
-        OutlineElement o = new OutlineElement(0, 0, width, height, new RGB(0, 0, 0), new RGB(0, 100, 255));
+        OutlineElement o = new OutlineElement(0, 0, width, height, new RGB(0, 0, 0), new RGB(120, 0, 255));
         home.AddElement(o);
 
         List<ProgramExecutable> apps = Programs.ListApps();
@@ -85,9 +85,16 @@ public static class OS {
                         Console.Write("\x1b[?1049h");
                         Console.Clear();
                         Console.CursorVisible = true;
-                        ProgramReturn programReturn = Programs.RunProgramExecutable(apps[cursorRelativeY]);
+                        ProgramReturn? programReturn = null;
+                        try {
+                            programReturn = Programs.RunProgramExecutable(apps[cursorRelativeY]);
+                        } catch {
+                            appTexts[cursorRelativeY].FG = new RGB(255, 0, 0);
+                        }
 
-                        if (programReturn.exitCode == 0) {
+                        if (programReturn == null) {
+                            Console.Write("\n\nProcess failed to execute (ext:2). Press any key to continue...");
+                        } else if (programReturn.exitCode == 0) {
                             Console.Write("\n\nProcess exited (ext:0). Press any key to continue...");
                         } else if (programReturn.exitCode == 1) {
                             string[] oops = new string[] {
@@ -116,6 +123,7 @@ public static class OS {
                         } else {
                             Console.Write("\n\nProcess exited (ext:{0}). Press any key to continue...", programReturn.exitCode);
                         }
+
                         Console.ReadKey(true);
                         Console.CursorVisible = false;
                         Console.Write("\x1b[?1049l");
@@ -124,7 +132,28 @@ public static class OS {
                 }
             }
 
-            // t.Text = $"X: {cursor.X}, Y: {cursor.Y}";
+            if (key.Key == ConsoleKey.Q) {
+                pos = 3;
+                apps = Programs.ListApps();
+                for (int i = 0; i < Math.Max(apps.Count, appTexts.Count); i++) {
+                    if (i >= apps.Count) {
+                        home.RemoveElement(appTexts[i]);
+                        appTexts = appTexts.Take(i).ToList();
+                        continue;
+                    }
+
+                    if (apps[i].name == "NSB.OS" || apps[i].name == "NSB.OS.Library") continue;
+                    if (i >= appTexts.Count) {
+                        CenteredTextElement appText = new CenteredTextElement(0, pos++, apps[i].name, width, null, null);
+                        appTexts.Add(appText);
+                    }
+
+                    if (!home.Elements.Contains(appTexts[i])) home.AddElement(appTexts[i]);
+                    appTexts[i].Y = pos++;
+                    appTexts[i].Text = apps[i].name;
+                    appTexts[i].FG = null;
+                }
+            }
 
             renderer.Render();
         }

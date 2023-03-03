@@ -1,0 +1,15 @@
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/bin/Debug/net7.0/Programs.GraphicTest.deps.json
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/bin/Debug/net7.0/Programs.GraphicTest.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/bin/Debug/net7.0/Programs.GraphicTest.pdb
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/bin/Debug/net7.0/NSB.OS.Library.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/bin/Debug/net7.0/NSB.OS.Library.pdb
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/obj/Debug/net7.0/Programs.GraphicTest.csproj.AssemblyReference.cache
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/obj/Debug/net7.0/Programs.GraphicTest.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/obj/Debug/net7.0/Programs.GraphicTest.AssemblyInfoInputs.cache
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/obj/Debug/net7.0/Programs.GraphicTest.AssemblyInfo.cs
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/obj/Debug/net7.0/Programs.GraphicTest.csproj.CoreCompileInputs.cache
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/obj/Debug/net7.0/Programs.GraphicTest.csproj.CopyComplete
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/obj/Debug/net7.0/Programs.GraphicTest.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/obj/Debug/net7.0/refint/Programs.GraphicTest.dll
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/obj/Debug/net7.0/Programs.GraphicTest.pdb
+/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.GraphicTest/obj/Debug/net7.0/ref/Programs.GraphicTest.dll

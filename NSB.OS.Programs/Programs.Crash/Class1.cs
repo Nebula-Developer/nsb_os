@@ -12,6 +12,7 @@ public static class Program {
         Console.WriteLine("2. Divide by zero method");
         Console.WriteLine("3. Exit");
         Console.Write("Choice: ");
+        
         CHOICE:
         string choice = Console.ReadLine();
         switch (choice) {
