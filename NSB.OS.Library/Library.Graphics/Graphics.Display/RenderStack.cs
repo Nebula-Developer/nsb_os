@@ -49,25 +49,28 @@ public class RendererStack {
 
     private Pixel[,] oldBuffer = new Pixel[0, 0];
 
-    public void Render() {
+    public void Render(bool refresh = false) {
         Pixel[,] buffer = GetDisplayData();
         // Get the differences and only print what we have to
         Console.Write("\x1b[0;0H");
+        var drawAll = buffer.Length != oldBuffer.Length || refresh;
 
         for (int y = 0; y < buffer.GetLength(0); y++) {
             for (int x = 0; x < buffer.GetLength(1); x++) {
-                // Make sure we are in bounds
-                if (y >= oldBuffer.GetLength(0) || x >= oldBuffer.GetLength(1)) {
-                    if (y >= buffer.GetLength(0) || x >= buffer.GetLength(1) || buffer[y, x] == null) continue;
-                    Console.SetCursorPosition(x, y);
-                    Console.Write(buffer[y, x].ToString());
+                if (buffer[y, x] == null) continue;
+                string toString = buffer[y, x].ToString();
+                if (drawAll) {
+                    Console.Write(toString);
                     continue;
                 }
+
                 if (buffer[y, x] != oldBuffer[y, x]) {
                     Console.SetCursorPosition(x, y);
-                    Console.Write(buffer[y, x].ToString());
+                    Console.Write(toString);
                 }
             }
+
+            if (drawAll && y != buffer.GetLength(0) - 1) Console.Write("\n");
         }
         oldBuffer = buffer;
     }

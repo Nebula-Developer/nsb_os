@@ -12,6 +12,7 @@ public static class OS {
         int width = 80;
         int height = Console.WindowHeight;
         Console.CursorVisible = false;
+        Console.Clear();
 
         Display home = new Display(new Vector2i(0, 0), new Vector2i(width, height));
         Rectangle bg = new Rectangle(0, 0, width, height, new RGB(0, 0, 0), new RGB(0, 100, 255));
@@ -34,6 +35,8 @@ public static class OS {
             if (key.Key == ConsoleKey.S) cursor.Y++;
             if (key.Key == ConsoleKey.A) cursor.X--;
             if (key.Key == ConsoleKey.D) cursor.X++;
+
+            t.Text = $"X: {cursor.X}, Y: {cursor.Y}";
 
             renderer.Render();
         }
