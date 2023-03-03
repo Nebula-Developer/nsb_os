@@ -14,7 +14,7 @@ public static class Program {
         Console.Write("Choice: ");
         
         CHOICE:
-        string choice = Console.ReadLine();
+        string choice = Console.ReadLine() ?? "";
         switch (choice) {
             case "1":
                 throw new Exception("This is a fake error to test the error handler.");

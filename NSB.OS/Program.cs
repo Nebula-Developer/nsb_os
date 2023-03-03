@@ -11,32 +11,53 @@ namespace NSB.OS;
 public static class OS {
     public static void Main(String[] args) {
         int width = 80;
-        int height = Console.WindowHeight;
+        int height = Math.Min(Console.WindowHeight, 25);
         Console.CursorVisible = false;
         Console.Clear();
 
         Display home = new Display(new Vector2i(0, 0), new Vector2i(width, height));
-        RectangleElement bg = new RectangleElement(0, 0, width, height, new RGB(0, 0, 0), new RGB(255, 160, 255));
+        RectangleElement bg = new RectangleElement(0, 0, width, height, new RGB(0, 0, 0), new RGB(160, 0, 255));
         home.AddElement(bg);
-        CenteredTextElement t = new CenteredTextElement(0, 1, "NSB_OS", width, null, null);
-        home.AddElement(t);
-        TextBarElement r = new TextBarElement(4, 2, width - 5, 2, '─', new RGB(0, 0, 0), new RGB(120, 0, 255));
-        home.AddElement(r);
+        
+        home.AddElement(new TextBarElement(4, 3, width - 5, 3, '─', new RGB(0, 0, 0), new RGB(120, 0, 255)));
+        home.AddElement(new TextElement(0, 2, "Program List", new TextConfig() {
+            Alignment = TextAlignment.Center,
+            Width = width,
+            Height = 1,
+            Orientation = TextOrientation.Horizontal
+        }, null, new RGB(135, 0, 255)));
         OutlineElement o = new OutlineElement(0, 0, width, height, new RGB(0, 0, 0), new RGB(120, 0, 255));
         home.AddElement(o);
 
         List<ProgramExecutable> apps = Programs.ListApps();
-        List<CenteredTextElement> appTexts = new List<CenteredTextElement>();
-        int pos = 3;
+        List<TextElement> appTexts = new List<TextElement>();
+        int pos = 4;
         for (int i = 0; i < apps.Count; i++) {
             if (apps[i].name == "NSB.OS" || apps[i].name == "NSB.OS.Library") continue;
-            CenteredTextElement appText = new CenteredTextElement(0, pos++, apps[i].name, width, null, null);
+            TextElement appText = new TextElement(0, pos++, apps[i].name, TextConfig.Centered, null, null);
             appTexts.Add(appText);
             home.AddElement(appText);
         }
 
-        CharElement cursor = new CharElement(0, 0, 'X', null, new RGB(50, 100, 255));
+        CharElement cursor = new CharElement(1, 1, 'X', null, new RGB(150, 50, 255));
         home.AddElement(cursor);
+
+        TextElement nsbOSTitle = new TextElement(0, 0, "NSB│OS", new TextConfig() {
+            Alignment = TextAlignment.Center,
+            Width = 1,
+            Height = height,
+            Orientation = TextOrientation.Vertical
+        }, null, new RGB(120, 0, 255));
+
+        TextElement programTitle = new TextElement(0, 0, "[ Programs ]", new TextConfig() {
+            Alignment = TextAlignment.Center,
+            Width = width,
+            Height = 1,
+            Orientation = TextOrientation.Horizontal
+        }, null, new RGB(120, 0, 255));
+
+        home.AddElement(nsbOSTitle);
+        home.AddElement(programTitle);
 
         RendererStack renderer = new RendererStack();
         renderer.AddDisplay(home);
@@ -65,14 +86,35 @@ public static class OS {
             if (key.Key == ConsoleKey.A) cursor.X--;
             if (key.Key == ConsoleKey.D) cursor.X++;
 
+            cursor.X = Math.Clamp(cursor.X, 1, width - 2);
+            cursor.Y = Math.Clamp(cursor.Y, 1, height - 2);
+
             if (key.Key == ConsoleKey.E) {
                 cursorIndex++;
                 if (cursorIndex >= fadeChars.Length) cursorIndex = 0;
                 cursor.Character = fadeChars[cursorIndex];
             }
 
+            int cursorRelativeY = cursor.Y - 4;
+
+            for (int i = 0; i < appTexts.Count; i++) {
+                appTexts[i].BG = null;
+            }
+
+            if (cursorRelativeY >= 0 && cursorRelativeY < apps.Count) {
+                int textLength = apps[cursorRelativeY].name.Length;
+                int textStart = (width / 2) - (textLength / 2);
+                if (textLength % 2 != 0) textStart--;
+                int textEnd = textStart + textLength;
+                textEnd--;
+                if (cursor.X >= textStart && cursor.X <= textEnd) {
+                    appTexts[cursorRelativeY].BG = new RGB(60, 50, 100);
+                } else {
+                    appTexts[cursorRelativeY].BG = null;
+                }
+            }
+
             if (key.Key == ConsoleKey.Spacebar) {
-                int cursorRelativeY = cursor.Y - 3;
                 if (cursorRelativeY >= 0 && cursorRelativeY < apps.Count) {
                     int textLength = apps[cursorRelativeY].name.Length;
                     int textStart = (width / 2) - (textLength / 2);
@@ -133,7 +175,7 @@ public static class OS {
             }
 
             if (key.Key == ConsoleKey.Q) {
-                pos = 3;
+                pos = 4;
                 apps = Programs.ListApps();
                 for (int i = 0; i < Math.Max(apps.Count, appTexts.Count); i++) {
                     if (i >= apps.Count) {
@@ -144,7 +186,7 @@ public static class OS {
 
                     if (apps[i].name == "NSB.OS" || apps[i].name == "NSB.OS.Library") continue;
                     if (i >= appTexts.Count) {
-                        CenteredTextElement appText = new CenteredTextElement(0, pos++, apps[i].name, width, null, null);
+                        TextElement appText = new TextElement(pos, pos++, apps[i].name, TextConfig.Right, null, null);
                         appTexts.Add(appText);
                     }
 
