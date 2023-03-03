@@ -20,7 +20,7 @@ public static class OS {
         home.AddElement(bg);
         CenteredTextElement t = new CenteredTextElement(0, 1, "NSB_OS", width, null, null);
         home.AddElement(t);
-        RectangleElement r = new RectangleElement(0, 0, 10, 10, new RGB(0, 255, 0), new RGB(0, 100, 255));
+        TextBarElement r = new TextBarElement(4, 2, width - 5, 2, '─', new RGB(0, 0, 0), new RGB(0, 100, 255));
         home.AddElement(r);
         OutlineElement o = new OutlineElement(0, 0, width, height, new RGB(0, 0, 0), new RGB(0, 100, 255));
         home.AddElement(o);
@@ -31,15 +31,9 @@ public static class OS {
         for (int i = 0; i < apps.Count; i++) {
             if (apps[i].name == "NSB.OS" || apps[i].name == "NSB.OS.Library") continue;
             CenteredTextElement appText = new CenteredTextElement(0, pos++, apps[i].name, width, null, null);
-            Console.WriteLine(pos);
-            CenteredTextElement appText2 = new CenteredTextElement(0, pos++, apps[i].assembly.GetName().Version?.ToString() ?? "unknown version", width, null, null);
-            Console.WriteLine(pos);
             appTexts.Add(appText);
-            appTexts.Add(appText2);
             home.AddElement(appText);
-            home.AddElement(appText2);
         }
-        Console.ReadLine();
 
         CharElement cursor = new CharElement(0, 0, 'X', null, new RGB(50, 100, 255));
         home.AddElement(cursor);
@@ -78,11 +72,14 @@ public static class OS {
             }
 
             if (key.Key == ConsoleKey.Spacebar) {
-                int cursorRelativeY = cursor.Y - 6;
+                int cursorRelativeY = cursor.Y - 3;
                 if (cursorRelativeY >= 0 && cursorRelativeY < apps.Count) {
                     int textLength = apps[cursorRelativeY].name.Length;
-                    int textStart = (width / 2) - (textLength / 2) - 1;
-                    int textEnd = textStart + textLength - 1;
+                    int textStart = (width / 2) - (textLength / 2);
+                    if (textLength % 2 != 0) textStart--;
+                    int textEnd = textStart + textLength;
+                    textEnd--;
+                    
                     if (cursor.X >= textStart && cursor.X <= textEnd) {
                         Console.Clear();
                         Console.CursorVisible = true;

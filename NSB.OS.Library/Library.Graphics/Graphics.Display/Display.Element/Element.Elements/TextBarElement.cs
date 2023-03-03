@@ -33,7 +33,7 @@ public class TextBarElement : Element {
         for (int i = 0; i < pixels.Width; i++) {
             for (int j = 0; j < pixels.Height; j++) {
                 if (i >= start.X && i <= end.X && j >= start.Y && j <= end.Y) {
-                    pixels.SetPixel(this, new Vector2i(i, j), new Pixel(Character, BG, FG));
+                    pixels.SetPixel(new Vector2i(i, j), new Pixel(Character, BG, FG));
                 }
             }
         }
