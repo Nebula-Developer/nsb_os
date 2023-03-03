@@ -2,13 +2,13 @@ using NSB.OS.Graphics.Mathematics;
 
 namespace NSB.OS.Graphics.DisplayNS;
 
-public class Rectangle : Element {
+public class RectangleElement : Element {
     public int Width { get; set; }
     public int Height { get; set; }
     public RGB? BG { get; set; }
     public RGB? FG { get; set; }
 
-    public Rectangle(int x, int y, int width, int height, RGB? bg = null, RGB? fg = null) {
+    public RectangleElement(int x, int y, int width, int height, RGB? bg = null, RGB? fg = null) {
         this.X = x;
         this.Y = y;
         Width = width;
@@ -17,7 +17,7 @@ public class Rectangle : Element {
         FG = fg;
     }
 
-    public Rectangle(Vector2i pos, int width, int height, RGB? bg = null, RGB? fg = null) {
+    public RectangleElement(Vector2i pos, int width, int height, RGB? bg = null, RGB? fg = null) {
         this.X = pos.X;
         this.Y = pos.Y;
         Width = width;
