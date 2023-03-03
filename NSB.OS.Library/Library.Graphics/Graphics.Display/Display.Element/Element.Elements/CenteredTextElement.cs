@@ -30,7 +30,7 @@ public class CenteredTextElement : Element {
         int start = (Width - Text.Length) / 2;
         for (int i = 0; i < Text.Length; i++) {
             if (X + i < 0 || X + i >= pixels.Width) continue;
-            pixels.SetPixel(this, new Vector2i(X + i + start, Y), new Pixel(Text[i], BG, FG));
+            pixels.SetPixel(this, new Vector2i(X + i + start, 0), new Pixel(Text[i], BG, FG));
         }
         return pixels;
     }

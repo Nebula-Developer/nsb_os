@@ -27,11 +27,19 @@ public static class OS {
 
         List<ProgramExecutable> apps = Programs.ListApps();
         List<CenteredTextElement> appTexts = new List<CenteredTextElement>();
+        int pos = 3;
         for (int i = 0; i < apps.Count; i++) {
-            CenteredTextElement appText = new CenteredTextElement(0, i + 3, apps[i].name, width, null, null);
+            if (apps[i].name == "NSB.OS" || apps[i].name == "NSB.OS.Library") continue;
+            CenteredTextElement appText = new CenteredTextElement(0, pos++, apps[i].name, width, null, null);
+            Console.WriteLine(pos);
+            CenteredTextElement appText2 = new CenteredTextElement(0, pos++, apps[i].assembly.GetName().Version?.ToString() ?? "unknown version", width, null, null);
+            Console.WriteLine(pos);
             appTexts.Add(appText);
+            appTexts.Add(appText2);
             home.AddElement(appText);
+            home.AddElement(appText2);
         }
+        Console.ReadLine();
 
         CharElement cursor = new CharElement(0, 0, 'X', null, new RGB(50, 100, 255));
         home.AddElement(cursor);
