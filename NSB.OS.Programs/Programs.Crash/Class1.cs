@@ -18,7 +18,6 @@ public static class Program {
         switch (choice) {
             case "1":
                 throw new Exception("This is a fake error to test the error handler.");
-                break;
             case "2":
                 int a = 1;
                 int b = 0;

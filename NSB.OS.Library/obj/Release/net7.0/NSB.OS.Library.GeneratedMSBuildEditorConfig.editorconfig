@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = NSB.OS.Library
-build_property.ProjectDir = /home/nebuladev/Documents/nsb_os/NSB.OS.Library/
+build_property.ProjectDir = /Users/nicocook/Documents/nsb_os/NSB.OS.Library/

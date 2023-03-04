@@ -89,13 +89,44 @@ public static class OS {
             cursor.X = Math.Clamp(cursor.X, 1, width - 2);
             cursor.Y = Math.Clamp(cursor.Y, 1, height - 2);
 
+            int cursorRelativeY = cursor.Y - 4;
+
+            if (key.Key == ConsoleKey.Tab) {
+                if (cursorRelativeY >= 0 && cursorRelativeY < apps.Count) {
+                    int textLength = apps[cursorRelativeY].name.Length;
+                    int textStart = (width / 2) - (textLength / 2);
+                    if (textLength % 2 != 0) textStart--;
+                    int textEnd = textStart + textLength;
+                    textEnd--;
+
+                    if (cursor.X >= textStart && cursor.X <= textEnd) {
+                        // Move cursor to next app
+                        cursorRelativeY++;
+                        if (cursorRelativeY >= apps.Count) cursorRelativeY = 0;
+                        cursor.Y = cursorRelativeY + 4;
+                        cursor.X = (width / 2) - (apps[cursorRelativeY].name.Length / 2);
+                        if (apps[cursorRelativeY].name.Length % 2 != 0) cursor.X--;
+                    } else {
+                        // Move cursor to first app
+                        cursorRelativeY = 0;
+                        cursor.Y = cursorRelativeY + 4;
+                        cursor.X = (width / 2) - (apps[0].name.Length / 2);
+                        if (apps[0].name.Length % 2 != 0) cursor.X--;
+                    }
+                } else {
+                    // Move cursor to first app
+                    cursorRelativeY = 0;
+                    cursor.Y = cursorRelativeY + 4;
+                    cursor.X = (width / 2) - (apps[0].name.Length / 2);
+                    if (apps[0].name.Length % 2 != 0) cursor.X--;
+                }
+            }
+
             if (key.Key == ConsoleKey.E) {
                 cursorIndex++;
                 if (cursorIndex >= fadeChars.Length) cursorIndex = 0;
                 cursor.Character = fadeChars[cursorIndex];
             }
-
-            int cursorRelativeY = cursor.Y - 4;
 
             for (int i = 0; i < appTexts.Count; i++) {
                 appTexts[i].BG = null;
@@ -108,7 +139,7 @@ public static class OS {
                 int textEnd = textStart + textLength;
                 textEnd--;
                 if (cursor.X >= textStart && cursor.X <= textEnd) {
-                    appTexts[cursorRelativeY].BG = new RGB(60, 50, 100);
+                    appTexts[cursorRelativeY].BG = new RGB(30, 0, 60);
                 } else {
                     appTexts[cursorRelativeY].BG = null;
                 }
