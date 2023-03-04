@@ -39,7 +39,7 @@ public static class OS {
             home.AddElement(appText);
         }
 
-        CharElement cursor = new CharElement(1, 1, 'X', null, new RGB(150, 50, 255));
+        CursorElement cursor = new CursorElement(1, 1, null, new RGB(150, 50, 255));
         home.AddElement(cursor);
 
         TextElement nsbOSTitle = new TextElement(0, 0, "NSB│OS", new TextConfig() {
@@ -63,7 +63,6 @@ public static class OS {
         renderer.AddDisplay(home);
         renderer.Render();
 
-        int cursorIndex = 0;
         char[] fadeChars = new char[] {
             '█',
             '▓',
@@ -120,12 +119,6 @@ public static class OS {
                     cursor.X = (width / 2) - (apps[0].name.Length / 2);
                     if (apps[0].name.Length % 2 != 0) cursor.X--;
                 }
-            }
-
-            if (key.Key == ConsoleKey.E) {
-                cursorIndex++;
-                if (cursorIndex >= fadeChars.Length) cursorIndex = 0;
-                cursor.Character = fadeChars[cursorIndex];
             }
 
             for (int i = 0; i < appTexts.Count; i++) {
