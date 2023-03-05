@@ -1,0 +1,118 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.WindowExample/Programs.WindowExample.csproj": {}
+  },
+  "projects": {
+    "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj",
+        "projectName": "NSB.OS.Library",
+        "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj",
+        "packagesPath": "/Users/nicocook/.nuget/packages/",
+        "outputPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/nicocook/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.WindowExample/Programs.WindowExample.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.WindowExample/Programs.WindowExample.csproj",
+        "projectName": "Programs.WindowExample",
+        "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.WindowExample/Programs.WindowExample.csproj",
+        "packagesPath": "/Users/nicocook/.nuget/packages/",
+        "outputPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Programs/Programs.WindowExample/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/nicocook/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj": {
+                "projectPath": "/Users/nicocook/Documents/nsb_os/NSB.OS.Library/NSB.OS.Library.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

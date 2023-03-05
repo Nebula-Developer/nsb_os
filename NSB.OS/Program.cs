@@ -10,6 +10,11 @@ namespace NSB.OS;
 
 public static class OS {
     public static void Main(String[] args) {
+        if (args.Contains("--test-link") || args.Contains("-t")) {
+            Link.TestLink();
+            return;
+        }
+
         int width = 80;
         int height = Math.Min(Console.WindowHeight, 25);
         Console.CursorVisible = false;
