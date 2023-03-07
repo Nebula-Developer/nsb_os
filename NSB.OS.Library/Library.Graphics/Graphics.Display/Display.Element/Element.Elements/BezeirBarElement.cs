@@ -32,9 +32,10 @@ public class BezeirBarElement : Element {
     {
         float t = 0;
         Vector2 old = new Vector2(start.X, start.Y);
-        Vector2[] newPoints = new Vector2[points.Length + 1];
+        Vector2[] newPoints = new Vector2[points.Length + 2];
         newPoints[0] = new Vector2(start.X, start.Y);
-        for (int i = 1; i < newPoints.Length; i++)
+        newPoints[newPoints.Length - 1] = new Vector2(end.X, end.Y);
+        for (int i = 1; i < newPoints.Length - 1; i++)
         {
             newPoints[i] = new Vector2(points[i - 1].X, points[i - 1].Y);
         }
