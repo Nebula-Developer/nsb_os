@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Reflection;
+using NSB.OS.FileSystem;
 
 namespace NSB.OS.Runtime.ProgramsNS;
 
@@ -15,10 +16,15 @@ public class ProgramExecutable {
 }
 
 public static class Programs {
-    public static List<ProgramExecutable> ListApps(string? searchPath = null) {
-        if (searchPath == null) searchPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "", "Apps");;
+    public static List<ProgramExecutable> ListApps(Drive drive) {
+        string searchPath = drive.GetPath("/Users/Shared/Programs");
+        Console.WriteLine("Searching path: " + searchPath);
+        Console.ReadLine();
     
-        if (!Directory.Exists(searchPath)) throw new Exception("Directory: " + searchPath + " does not exist.");
+        if (!Directory.Exists(searchPath)) {
+            Directory.CreateDirectory(searchPath);
+            return new List<ProgramExecutable>();
+        }
 
         string[] assemblyFiles = Directory.GetFiles(searchPath, "*.dll");
         List<ProgramExecutable> programExecutables = new List<ProgramExecutable>();

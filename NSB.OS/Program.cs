@@ -13,6 +13,7 @@ public static class OS {
     public static void Main(String[] args) {
         Drive root = new Drive("Root");
         if (!FSInit.CheckInitialized(root, true)) FSInit.Initialize(root);
+        if (!root.Exists("/Users/Shared/Programs")) root.CreateDir("/Users/Shared/Programs");
 
         if (args.Contains("--test-link") || args.Contains("-t")) {
             Link.TestLink();
@@ -38,7 +39,7 @@ public static class OS {
         OutlineElement o = new OutlineElement(0, 0, width, height, new RGB(0, 0, 0), new RGB(120, 0, 255));
         home.AddElement(o);
 
-        List<ProgramExecutable> apps = Programs.ListApps();
+        List<ProgramExecutable> apps = Programs.ListApps(root);
         List<TextElement> appTexts = new List<TextElement>();
         int pos = 4;
         for (int i = 0; i < apps.Count; i++) {
@@ -99,7 +100,7 @@ public static class OS {
 
             int cursorRelativeY = cursor.Y - 4;
 
-            if (key.Key == ConsoleKey.Tab) {
+            if (key.Key == ConsoleKey.Tab && apps.Count > 0) {
                 if (cursorRelativeY >= 0 && cursorRelativeY < apps.Count) {
                     int textLength = apps[cursorRelativeY].name.Length;
                     int textStart = (width / 2) - (textLength / 2);
@@ -209,7 +210,7 @@ public static class OS {
 
             if (key.Key == ConsoleKey.Q) {
                 pos = 4;
-                apps = Programs.ListApps();
+                apps = Programs.ListApps(root);
                 for (int i = 0; i < Math.Max(apps.Count, appTexts.Count); i++) {
                     if (i >= apps.Count) {
                         home.RemoveElement(appTexts[i]);
