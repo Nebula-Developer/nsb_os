@@ -5,11 +5,15 @@ using NSB.OS.Graphics.DisplayNS;
 using NSB.OS.Graphics.Mathematics;
 using NSB.OS.Runtime.Tests;
 using NSB.OS.Runtime.ProgramsNS;
+using NSB.OS.FileSystem;
 
 namespace NSB.OS;
 
 public static class OS {
     public static void Main(String[] args) {
+        Drive root = new Drive("Root");
+        if (!FSInit.CheckInitialized(root, true)) FSInit.Initialize(root);
+
         if (args.Contains("--test-link") || args.Contains("-t")) {
             Link.TestLink();
             return;

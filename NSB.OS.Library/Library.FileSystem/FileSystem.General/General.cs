@@ -6,86 +6,45 @@ using System.IO;
 
 namespace NSB.OS.FileSystem;
 
-public static partial class FS {
-    public static NSFile Read(string path) {
-        if (!File.Exists(path)) throw new FileNotFoundException($"File not found: {path}");
-        return new NSFile(path);
-    }
-
-    public static NSFile? TryRead(string path) => File.Exists(path) ? new NSFile(path) : null;
-
-    public static NSFile Write(string path) => new NSFile(path).Create();
-    public static NSFile Write(string path, string text) => new NSFile(path).Write(text);
-    public static NSFile Write(string path, string[] lines) => new NSFile(path).Write(lines);
-
-    public static NSFile Append(string path, string text) => new NSFile(path).Append(text);
-    public static NSFile Append(string path, string[] lines) => new NSFile(path).Append(lines);
-
-    public static NSFile Delete(string path) => new NSFile(path).Delete();
-    public static NSFile Create(string path) => new NSFile(path).Create();
-
-    public static NSDir Mkdir(string path) => new NSDir(path).Create();
-    public static NSDir Rmdir(string path) => new NSDir(path).Delete();
-}
-
 public class NSFile {
-    public string Path { get; set; }
-    public string[] Lines => File.ReadAllLines(Path);
-    public string Text => File.ReadAllText(Path);
+    public string Path { get; private set; }
+    public static string GetPath(string path) => path;
 
-    public NSFile(string path) {
-        Path = path;
+    public string Name => System.IO.Path.GetFileName(Path);
+    public string Extension => System.IO.Path.GetExtension(Path);
+
+    public string Text => System.IO.File.ReadAllText(Path);
+    public string[] Lines  => System.IO.File.ReadAllLines(Path);
+    public int Bytes => System.IO.File.ReadAllBytes(Path).Length;
+    public System.IO.FileInfo Info => new(Path);
+    public bool Exists() => System.IO.File.Exists(Path);
+
+    public bool Create() {
+        if (Exists()) return false;
+        System.IO.File.Create(Path).Close();
+        return true;
     }
 
-    public NSFile Write(string text) {
-        File.WriteAllText(Path, text);
-        return this;
-    }
-
-    public NSFile Write(string[] lines) {
-        File.WriteAllLines(Path, lines);
-        return this;
-    }
-
-    public NSFile Append(string text) {
-        File.AppendAllText(Path, text);
-        return this;
-    }
-
-    public NSFile Append(string[] lines) {
-        File.AppendAllLines(Path, lines);
-        return this;
-    }
-
-    public NSFile Delete() {
-        File.Delete(Path);
-        return this;
-    }
-
-    public NSFile Create() {
-        if (File.Exists(Path)) throw new FileLoadException($"File already exists: {Path}");
-        File.Create(Path).Close();
-        return this;
-    }
+    public NSFile(string path) => Path = GetPath(path);
 }
 
 public class NSDir {
-    public string Path { get; set; }
-    public string[] Files => Directory.GetFiles(Path);
-    public string[] Directories => Directory.GetDirectories(Path);
+    public string Path { get; private set; }
+    public static string GetPath(string path) => path;
 
-    public NSDir(string path) {
-        Path = path;
+    public string Name => System.IO.Path.GetFileName(Path);
+    public string[] Files => System.IO.Directory.GetFiles(Path);
+    public string[] Directories => System.IO.Directory.GetDirectories(Path);
+
+    public NSFile[] NSFiles => Files.Select(file => new NSFile(file)).ToArray();
+    public NSDir[] NSDirs => Directories.Select(dir => new NSDir(dir)).ToArray();
+    public bool Exists() => System.IO.Directory.Exists(Path);
+
+    public bool Create() {
+        if (Exists()) return false;
+        System.IO.Directory.CreateDirectory(Path);
+        return true;
     }
 
-    public NSDir Delete() {
-        Directory.Delete(Path);
-        return this;
-    }
-
-    public NSDir Create() {
-        if (Directory.Exists(Path)) throw new DirectoryNotFoundException($"Directory already exists: {Path}");
-        Directory.CreateDirectory(Path);
-        return this;
-    }
+    public NSDir(string path) => Path = GetPath(path);
 }
