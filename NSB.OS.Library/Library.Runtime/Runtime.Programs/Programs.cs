@@ -18,8 +18,6 @@ public class ProgramExecutable {
 public static class Programs {
     public static List<ProgramExecutable> ListApps(Drive drive) {
         string searchPath = drive.GetPath("/Users/Shared/Programs");
-        Console.WriteLine("Searching path: " + searchPath);
-        Console.ReadLine();
     
         if (!Directory.Exists(searchPath)) {
             Directory.CreateDirectory(searchPath);
