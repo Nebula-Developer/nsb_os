@@ -1,5 +1,0 @@
-/home/nebuladev/Documents/nsb_os/publish/NSB.OS
-/home/nebuladev/Documents/nsb_os/publish/NSB.OS.dll
-/home/nebuladev/Documents/nsb_os/publish/NSB.OS.deps.json
-/home/nebuladev/Documents/nsb_os/publish/NSB.OS.runtimeconfig.json
-/home/nebuladev/Documents/nsb_os/publish/NSB.OS.pdb
