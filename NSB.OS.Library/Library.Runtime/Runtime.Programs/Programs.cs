@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using NSB.OS.FileSystem;
+using NSB.OS.Logic.Threads;
 
 namespace NSB.OS.Runtime.ProgramsNS;
 
@@ -38,17 +39,26 @@ public static class Programs {
     }
 
     public static ProgramReturn RunProgramExecutable(ProgramExecutable programExecutable) {
-        Type? programAType = programExecutable.assembly.GetType(programExecutable.assembly.GetName().Name + ".Program");
-        MethodInfo? runMethod = programAType?.GetMethod("Run");
+        ProgramReturn returns = new ProgramReturn(0, null);
+        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         
-        if (programAType == null || runMethod == null) return new ProgramReturn(1, new Exception("Program: " + programExecutable.name + " does not have a Program.Run() method."));
+        Thread thread = new Thread(() => {
+            Type? programAType = programExecutable.assembly.GetType(programExecutable.assembly.GetName().Name + ".Program");
+            MethodInfo? runMethod = programAType?.GetMethod("Run");
+            
+            if (programAType == null || runMethod == null) returns = new ProgramReturn(1, new Exception("Program: " + programExecutable.name + " does not have a Program.Run() method."));
+            object? a;
 
-        try {
-            object? a = runMethod.Invoke(null, null);
-            return new ProgramReturn(0, null);
-        } catch (TargetInvocationException e) {
-            return new ProgramReturn(1, e.InnerException);
-        }
+            try {
+                a = runMethod?.Invoke(null, null);
+                returns = new ProgramReturn(0, null);
+            } catch (TargetInvocationException e) {
+                returns = new ProgramReturn(1, e.InnerException);
+            }
+        });
+        thread.Start();
+        thread.Join();
+        return returns;
     }
 }
 
