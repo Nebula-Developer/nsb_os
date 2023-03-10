@@ -16,6 +16,23 @@ public class ProgramSelect : Display {
     public List<TextElement> ProgramElements = new List<TextElement>();
     private RendererStack Renderer;
 
+    private static string[] oops = new string[] {
+        "Oops!",
+        "Well, that's embarrassing.",
+        "Oh no!",
+        "My bad, let me fix that.",
+        "Nope, that's not right.",
+        "Did I do that?",
+        "I spoke too soon.",
+        "My apologies.",
+        "Eek, that wasn't supposed to happen.",
+        "Looks like I made a mistake.",
+        "Uh-oh, let's try that again.",
+        "My mistake, sorry about that.",
+        "Well, that's not ideal.",
+        "That didn't go as planned."
+    };
+
     public void UpdateListing() {
         foreach (TextElement element in ProgramElements) this.RemoveElement(element);
         ProgramElements.Clear();
@@ -74,7 +91,35 @@ public class ProgramSelect : Display {
 
             if (Cursor.X >= posStart && Cursor.X <= posEnd) {
                 ProgramExecutable program = ProgramList[Cursor.Y - 2];
-                Programs.RunProgramExecutable(program);
+                string oopsStr = oops[new Random().Next(0, oops.Length - 1)];
+                Console.Write("\x1b[?1049h");
+                Console.Clear();
+
+                ProgramReturn programReturn = new ProgramReturn(1, null);
+                Exception? exp = null;
+
+                try {
+                    programReturn = Programs.RunProgramExecutable(program);
+                } catch (Exception e) {
+                    exp = e;
+                }
+
+                if (programReturn.exitCode == 1) {
+                    exp = exp ?? programReturn.exception ?? new Exception("Unknown error");
+                    Console.WriteLine("\n" + oopsStr);
+                    Console.WriteLine("Process crashed (ext:1), more details below:");
+                    Console.WriteLine(exp);
+                    Console.WriteLine("Plain: " + exp.Message);
+                    Console.WriteLine("Process: " + exp.Source);
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                } else {
+                    Console.WriteLine("\nProcess exited (ext:" + programReturn.exitCode + ") successfully.");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                }
+                
+                Console.Write("\x1b[?1049l");
                 fullRefresh = true;
             }
         } else if (key.Key == ConsoleKey.Tab) {
