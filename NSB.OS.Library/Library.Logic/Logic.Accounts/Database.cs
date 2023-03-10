@@ -12,7 +12,7 @@ public class Database {
     public bool PathFromDrive { get; set; }
     public Drive Drive { get; set; }
     public Dictionary<string, object?> Data { get; set; }
-    
+
     public object? this[string key] {
         get => Get(key);
         set => Set(key, value);

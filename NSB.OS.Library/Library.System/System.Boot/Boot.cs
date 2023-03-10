@@ -23,7 +23,7 @@ public static partial class Boot {
                 FirstName = "Administrator"
             }));
         }
-        
+
         Input.Start();
     }
 }
