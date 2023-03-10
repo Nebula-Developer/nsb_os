@@ -23,8 +23,10 @@ public static class OS
         }
 
         RendererStack renderer = new RendererStack();
-        ProgramSelect programSelect = new ProgramSelect(new Vector2i(0, 0), new Vector2i(80, Math.Min(Console.WindowHeight, 25)), renderer);
-        renderer.AddDisplay(programSelect);
+        Login login = new Login(new Vector2i(0, 0), new Vector2i(80, Math.Min(Console.WindowHeight, 25)), renderer);
+        renderer.AddDisplay(login);
+        // ProgramSelect programSelect = new ProgramSelect(new Vector2i(0, 0), new Vector2i(80, Math.Min(Console.WindowHeight, 25)), renderer);
+        // renderer.AddDisplay(programSelect);
         renderer.Render();
     }
 }

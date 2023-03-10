@@ -7,6 +7,8 @@ namespace NSB.OS.SystemNS.BootNS;
 
 public static partial class Boot {
     public static void Init() {
+        Console.Clear();
+
         // Init the boot drive
         SystemDrives.Init();
 
@@ -23,7 +25,7 @@ public static partial class Boot {
                 FirstName = "Administrator"
             }));
         }
-        
+
         Input.Start();
     }
 }
