@@ -8,16 +8,13 @@ using NSB.OS.SystemNS.InputNS;
 
 namespace NSB.OS;
 
-public static class OS
-{
+public static class OS {
     private static Drive root => SystemDrives.BootDrive;
 
-    public static void Main(String[] args)
-    {
+    public static void Main(String[] args) {
         Boot.Init();
 
-        if (args.Contains("--test-link") || args.Contains("-t"))
-        {
+        if (args.Contains("--test-link") || args.Contains("-t")) {
             Link.TestLink();
             return;
         }
