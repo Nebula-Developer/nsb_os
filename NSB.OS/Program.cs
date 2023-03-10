@@ -13,8 +13,8 @@ public static class OS
 {
     public static void Main(String[] args)
     {
-        NSB.OS.Runtime.SignalsNS.Signals.CancelAll();
-        Drive root = new Drive("Root");
+        SystemDrives.Init();
+        Drive root = SystemDrives.BootDrive;
         if (!FSInit.CheckInitialized(root, true)) FSInit.Initialize(root);
         if (!root.Exists("/Users/Shared/Programs")) root.CreateDir("/Users/Shared/Programs");
 
