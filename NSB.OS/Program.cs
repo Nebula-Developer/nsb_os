@@ -24,9 +24,10 @@ public static class OS
                 FirstName = "Administrator"
             }));
             Console.WriteLine("Created account 'admin' with password 'admin'");
-            Console.ReadLine();
         }
 
+        Console.ReadLine();
+        
         Drive root = SystemDrives.BootDrive;
         if (!FSInit.CheckInitialized(root, true)) FSInit.Initialize(root);
         if (!root.Exists("/Users/Shared/Programs")) root.CreateDir("/Users/Shared/Programs");

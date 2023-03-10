@@ -52,7 +52,9 @@ public class Database {
         if (save) Save();
     }
 
-    public object? Get(string key) => Data[key];
+    public object? Get(string key) {
+        return Data.ContainsKey(key) ? Data[key] : null;
+    }
 
     public void Save() {
         if (PathFromDrive) {
@@ -63,4 +65,8 @@ public class Database {
     }
 
     public static object EmptyArray = new object[0];
+
+    public T? Cast<T>(string key) {
+        return JsonSerializer.Deserialize<T>(JsonSerializer.Serialize(Get(key), new JsonSerializerOptions() { WriteIndented = true }));
+    }
 }

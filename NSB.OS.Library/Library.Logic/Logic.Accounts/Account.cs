@@ -1,3 +1,5 @@
+using System.Reflection;
+
 public class Account {
     public string Username { get; set; }
     public string Password { get; set; }
@@ -7,6 +9,16 @@ public class Account {
         Username = username;
         Password = password;
         Optionals = optionals;
+    }
+
+    public bool Match(object match) {
+        foreach (PropertyInfo property in match.GetType().GetProperties()) {
+            if (property.GetValue(match) != null) {
+                var value = property.GetValue(match);
+                if (value != null && value.ToString() != this.GetType().GetProperty(property.Name)?.GetValue(this)?.ToString()) return false;
+            }
+        }
+        return true;
     }
 }
 

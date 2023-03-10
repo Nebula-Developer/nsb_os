@@ -8,7 +8,7 @@ namespace NSB.OS.Logic.AccountsNS;
 
 public static class Accounts {
     public static Database Database = new Database("System/Private/accdb.njson", true, SystemDrives.BootDrive);
-    public static List<Account>? GetAccounts => JsonSerializer.Deserialize<List<Account>>(Database["Accounts"] as string ?? "[]");
+    public static List<Account>? GetAccounts => Database.Cast<List<Account>>("Accounts");
     public static Account? CurrentAccount = null;
 
     public static void Init() {
@@ -34,19 +34,12 @@ public static class Accounts {
         CurrentAccount = account;
     }
 
-    public static Account? GetAccount(object keys) {
+    /// Example:
+    /// GetAccount(new { Username = "admin", Password = "admin" })
+    public static Account? GetAccount(object match) {
         List<Account> accounts = GetAccounts ?? new List<Account>();
         foreach (Account account in accounts) {
-            bool match = false;
-            foreach (var key in keys.GetType().GetProperties()) {
-                if (key.GetValue(keys) == key.GetValue(account)) {
-                    match = true;
-                } else {
-                    match = false;
-                    break;
-                }
-            }
-            if (match) return account;
+            if (account.Match(match)) return account;
         }
         return null;
     }
