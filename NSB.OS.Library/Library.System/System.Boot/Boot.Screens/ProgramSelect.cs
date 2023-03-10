@@ -118,7 +118,7 @@ public class ProgramSelect : Display {
                     Console.WriteLine("Press any key to continue...");
                     Console.ReadKey();
                 }
-                
+
                 Console.Write("\x1b[?1049l");
                 fullRefresh = true;
             }
