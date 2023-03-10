@@ -6,6 +6,7 @@ using NSB.OS.Graphics.Mathematics;
 using NSB.OS.Runtime.Tests;
 using NSB.OS.Runtime.ProgramsNS;
 using NSB.OS.FileSystem;
+using NSB.OS.Logic.AccountsNS;
 
 namespace NSB.OS;
 
@@ -14,6 +15,18 @@ public static class OS
     public static void Main(String[] args)
     {
         SystemDrives.Init();
+        Accounts.Init();
+
+        if (Accounts.GetAccounts != null) Accounts.GetAccounts?.ForEach((a) => Console.WriteLine(a.Username));
+
+        if (Accounts.GetAccount(new { Username = "admin" }) == null) {
+            Accounts.AddAccount(new Account("admin", "admin", new AccountOptionals() {
+                FirstName = "Administrator"
+            }));
+            Console.WriteLine("Created account 'admin' with password 'admin'");
+            Console.ReadLine();
+        }
+
         Drive root = SystemDrives.BootDrive;
         if (!FSInit.CheckInitialized(root, true)) FSInit.Initialize(root);
         if (!root.Exists("/Users/Shared/Programs")) root.CreateDir("/Users/Shared/Programs");

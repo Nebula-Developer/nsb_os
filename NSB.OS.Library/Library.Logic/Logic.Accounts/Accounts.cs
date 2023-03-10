@@ -1,0 +1,53 @@
+using NSB.OS.Graphics.Mathematics;
+using NSB.OS.Graphics;
+using System.Collections.Generic;
+using NSB.OS.FileSystem;
+using System.Text.Json;
+
+namespace NSB.OS.Logic.AccountsNS;
+
+public static class Accounts {
+    public static Database Database = new Database("System/Private/accdb.njson", true, SystemDrives.BootDrive);
+    public static List<Account>? GetAccounts => JsonSerializer.Deserialize<List<Account>>(Database["Accounts"] as string ?? "[]");
+    public static Account? CurrentAccount = null;
+
+    public static void Init() {
+        Database = new Database("System/Private/accdb.njson", true, SystemDrives.BootDrive);
+        if (Database["Accounts"] == null) Database["Accounts"] = Database.EmptyArray;
+    }
+
+    public static void AddAccount(Account account) {
+        List<Account> accounts = GetAccounts ?? new List<Account>();
+        accounts.Add(account);
+        Database["Accounts"] = accounts;
+        Database.Save();
+    }
+
+    public static void RemoveAccount(Account account) {
+        List<Account> accounts = GetAccounts ?? new List<Account>();
+        accounts.Remove(account);
+        Database["Accounts"] = accounts;
+        Database.Save();
+    }
+
+    public static void SetCurrentAccount(Account account) {
+        CurrentAccount = account;
+    }
+
+    public static Account? GetAccount(object keys) {
+        List<Account> accounts = GetAccounts ?? new List<Account>();
+        foreach (Account account in accounts) {
+            bool match = false;
+            foreach (var key in keys.GetType().GetProperties()) {
+                if (key.GetValue(keys) == key.GetValue(account)) {
+                    match = true;
+                } else {
+                    match = false;
+                    break;
+                }
+            }
+            if (match) return account;
+        }
+        return null;
+    }
+}
