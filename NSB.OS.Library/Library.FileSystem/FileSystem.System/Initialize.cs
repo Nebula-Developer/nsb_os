@@ -18,11 +18,19 @@ public static class FSInit {
 
     private static FSTemplate rootTemplate = new FSTemplate() {
         DirectoryTree = new() {
-            "System", "System/Private", "System/Data", "System/Test",
+            "System",
+            "System/Private",
+            "System/Data",
+            "System/Test",
             "Temp",
-            "Users", "Users/Shared",
-            "Config", "Config/Themes", "Config/Themes/Default",
-            "Config/Preferences", "Config/Rules", "Config/LoadScripts"
+            "Users",
+            "Users/Shared",
+            "Config",
+            "Config/Themes",
+            "Config/Themes/Default",
+            "Config/Preferences",
+            "Config/Rules",
+            "Config/LoadScripts"
         },
         FileData = new() {
             new("System/Private/lock", "0"),
