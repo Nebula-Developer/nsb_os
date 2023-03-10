@@ -2,14 +2,16 @@ using NSB.OS.Graphics.Mathematics;
 
 namespace NSB.OS.Graphics.DisplayNS;
 
-public class TextBarElement : Element {
+public class TextBarElement : Element
+{
     public Vector2i start, end;
     public RGB? BG { get; set; }
     public RGB? FG { get; set; }
     public char Character { get; set; }
 
 
-    public TextBarElement(int x, int y, int x2, int y2, char character, RGB? bg = null, RGB? fg = null) {
+    public TextBarElement(int x, int y, int x2, int y2, char character, RGB? bg = null, RGB? fg = null)
+    {
         this.X = x;
         this.Y = y;
         start = new Vector2i(x, y);
@@ -19,7 +21,8 @@ public class TextBarElement : Element {
         FG = fg;
     }
 
-    public TextBarElement(Vector2i startPos, Vector2i endPos, char character, RGB? bg = null, RGB? fg = null) {
+    public TextBarElement(Vector2i startPos, Vector2i endPos, char character, RGB? bg = null, RGB? fg = null)
+    {
         this.X = startPos.X;
         this.Y = startPos.Y;
         start = startPos;
@@ -29,7 +32,8 @@ public class TextBarElement : Element {
         FG = fg;
     }
 
-    public override PixelMap Draw(PixelMap pixels) {
+    public override PixelMap Draw(PixelMap pixels)
+    {
         int x0 = start.X;
         int y0 = start.Y;
         int x1 = end.X;
@@ -43,19 +47,23 @@ public class TextBarElement : Element {
 
         int err = dx - dy;
 
-        while (true) {
+        while (true)
+        {
             pixels.SetPixel(new Vector2i(x0, y0), new Pixel(Character, BG, FG));
 
-            if (x0 == x1 && y0 == y1) {
+            if (x0 == x1 && y0 == y1)
+            {
                 break;
             }
 
             int e2 = 2 * err;
-            if (e2 > -dy) {
+            if (e2 > -dy)
+            {
                 err -= dy;
                 x0 += sx;
             }
-            if (e2 < dx) {
+            if (e2 < dx)
+            {
                 err += dx;
                 y0 += sy;
             }

@@ -1,12 +1,15 @@
 
 namespace NSB.OS.FileSystem;
 
-public static class FSInit {
-    private class FSTemplate {
+public static class FSInit
+{
+    private class FSTemplate
+    {
         public List<string> DirectoryTree = new List<string>();
         public List<Tuple<string, string?>> FileData = new List<Tuple<string, string?>>();
 
-        public void SplashTemplate(Drive root) {
+        public void SplashTemplate(Drive root)
+        {
             foreach (string dir in DirectoryTree)
                 root.CreateDir(dir);
 
@@ -16,15 +19,26 @@ public static class FSInit {
         }
     }
 
-    private static FSTemplate rootTemplate = new FSTemplate() {
-        DirectoryTree = new() {
-            "System", "System/Private", "System/Data", "System/Test",
+    private static FSTemplate rootTemplate = new FSTemplate()
+    {
+        DirectoryTree = new()
+        {
+            "System",
+            "System/Private",
+            "System/Data",
+            "System/Test",
             "Temp",
-            "Users", "Users/Shared",
-            "Config", "Config/Themes", "Config/Themes/Default",
-            "Config/Preferences", "Config/Rules", "Config/LoadScripts"
+            "Users",
+            "Users/Shared",
+            "Config",
+            "Config/Themes",
+            "Config/Themes/Default",
+            "Config/Preferences",
+            "Config/Rules",
+            "Config/LoadScripts"
         },
-        FileData = new() {
+        FileData = new()
+        {
             new("System/Private/lock", "0"),
             new("System/Test/firstload", "1"),
             new("Temp/firstload", "1"),
@@ -37,8 +51,10 @@ public static class FSInit {
 
     public static void Initialize(Drive drive) => rootTemplate.SplashTemplate(drive);
 
-    public static bool CheckInitialized(Drive drive, bool deep = false) {
-        if (!deep) {
+    public static bool CheckInitialized(Drive drive, bool deep = false)
+    {
+        if (!deep)
+        {
             if (drive.Exists("System/Private/lock") && drive.GetText("System/Private/lock") == "1") return true;
             return true;
         }

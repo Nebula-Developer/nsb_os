@@ -1,13 +1,15 @@
 
 namespace NSB.OS.Graphics.DisplayNS;
 
-public class TextConfig {
+public class TextConfig
+{
     public TextOrientation Orientation { get; set; }
     public TextAlignment Alignment { get; set; }
     public int Width { get; set; }
     public int Height { get; set; }
 
-    public TextConfig(TextOrientation orientation = TextOrientation.Horizontal, TextAlignment alignment = TextAlignment.Left, int width = -1, int height = -1) {
+    public TextConfig(TextOrientation orientation = TextOrientation.Horizontal, TextAlignment alignment = TextAlignment.Left, int width = -1, int height = -1)
+    {
         Orientation = orientation;
         Alignment = alignment;
         Width = width;
@@ -21,12 +23,14 @@ public class TextConfig {
     public static TextConfig Vertical = new TextConfig(TextOrientation.Vertical);
 }
 
-public enum TextOrientation {
+public enum TextOrientation
+{
     Horizontal,
     Vertical
 }
 
-public enum TextAlignment {
+public enum TextAlignment
+{
     Left,
     Center,
     Right

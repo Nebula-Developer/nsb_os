@@ -5,17 +5,20 @@ using NSB.OS.Graphics;
 
 namespace Programs.Crash;
 
-public static class Program {
-    public static void Run() {
+public static class Program
+{
+    public static void Run()
+    {
         Console.WriteLine("Use throw method or divide by zero method?");
         Console.WriteLine("1. Throw method");
         Console.WriteLine("2. Divide by zero method");
         Console.WriteLine("3. Exit");
         Console.Write("Choice: ");
-        
-        CHOICE:
+
+    CHOICE:
         string choice = Console.ReadLine() ?? "";
-        switch (choice) {
+        switch (choice)
+        {
             case "1":
                 throw new Exception("This is a fake error to test the error handler.");
             case "2":

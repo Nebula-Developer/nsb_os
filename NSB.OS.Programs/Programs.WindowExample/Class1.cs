@@ -5,8 +5,10 @@ using NSB.OS.Graphics;
 
 namespace Programs.WindowExample;
 
-public static class Program {
-    public static void Run() {
+public static class Program
+{
+    public static void Run()
+    {
         Display display = new Display(new Vector2i(0, 0), new Vector2i(80, 25));
         BezeirBarElement bar = new BezeirBarElement(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1, new Vector2i[] {
             new Vector2i(0, 0)
@@ -17,7 +19,8 @@ public static class Program {
         renderer.AddDisplay(display);
         renderer.Render(true);
 
-        while (true) {
+        while (true)
+        {
             ConsoleKeyInfo key = Console.ReadKey(true);
 
             if (key.Key == ConsoleKey.W) bar.points[0].Y--;

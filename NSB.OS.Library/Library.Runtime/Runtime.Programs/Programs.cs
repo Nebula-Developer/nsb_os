@@ -6,21 +6,26 @@ using NSB.OS.Logic.Threads;
 
 namespace NSB.OS.Runtime.ProgramsNS;
 
-public class ProgramExecutable {
+public class ProgramExecutable
+{
     public string name;
     public Assembly assembly;
 
-    public ProgramExecutable(string name, Assembly assembly) {
+    public ProgramExecutable(string name, Assembly assembly)
+    {
         this.name = name;
         this.assembly = assembly;
     }
 }
 
-public static class Programs {
-    public static List<ProgramExecutable> ListApps(Drive drive) {
+public static class Programs
+{
+    public static List<ProgramExecutable> ListApps(Drive drive)
+    {
         string searchPath = drive.GetPath("/Users/Shared/Programs");
-    
-        if (!Directory.Exists(searchPath)) {
+
+        if (!Directory.Exists(searchPath))
+        {
             Directory.CreateDirectory(searchPath);
             return new List<ProgramExecutable>();
         }
@@ -38,21 +43,26 @@ public static class Programs {
         return programExecutables;
     }
 
-    public static ProgramReturn RunProgramExecutable(ProgramExecutable programExecutable) {
+    public static ProgramReturn RunProgramExecutable(ProgramExecutable programExecutable)
+    {
         ProgramReturn returns = new ProgramReturn(0, null);
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        
-        Thread thread = new Thread(() => {
+
+        Thread thread = new Thread(() =>
+        {
             Type? programAType = programExecutable.assembly.GetType(programExecutable.assembly.GetName().Name + ".Program");
             MethodInfo? runMethod = programAType?.GetMethod("Run");
-            
+
             if (programAType == null || runMethod == null) returns = new ProgramReturn(1, new Exception("Program: " + programExecutable.name + " does not have a Program.Run() method."));
             object? a;
 
-            try {
+            try
+            {
                 a = runMethod?.Invoke(null, null);
                 returns = new ProgramReturn(0, null);
-            } catch (TargetInvocationException e) {
+            }
+            catch (TargetInvocationException e)
+            {
                 returns = new ProgramReturn(1, e.InnerException);
             }
         });
@@ -62,11 +72,13 @@ public static class Programs {
     }
 }
 
-public class ProgramReturn {
+public class ProgramReturn
+{
     public int exitCode;
     public Exception? exception;
 
-    public ProgramReturn(int exitCode, Exception? exception) {
+    public ProgramReturn(int exitCode, Exception? exception)
+    {
         this.exitCode = exitCode;
         this.exception = exception;
     }

@@ -2,7 +2,8 @@ using NSB.OS.Graphics.Mathematics;
 
 namespace NSB.OS.Graphics.DisplayNS;
 
-public class OutlineElement : Element {
+public class OutlineElement : Element
+{
     public int Width { get; set; }
     public int Height { get; set; }
     public RGB? BG { get; set; }
@@ -15,7 +16,8 @@ public class OutlineElement : Element {
     public char h = '─';
     public char v = '│';
 
-    public OutlineElement(int x, int y, int width, int height, RGB? bg = null, RGB? fg = null) {
+    public OutlineElement(int x, int y, int width, int height, RGB? bg = null, RGB? fg = null)
+    {
         this.X = x;
         this.Y = y;
         Width = width;
@@ -24,7 +26,8 @@ public class OutlineElement : Element {
         FG = fg;
     }
 
-    public OutlineElement(Vector2i pos, int width, int height, RGB? bg = null, RGB? fg = null) {
+    public OutlineElement(Vector2i pos, int width, int height, RGB? bg = null, RGB? fg = null)
+    {
         this.X = pos.X;
         this.Y = pos.Y;
         Width = width;
@@ -32,21 +35,35 @@ public class OutlineElement : Element {
         BG = bg;
         FG = fg;
     }
-    
-    public override PixelMap Draw(PixelMap pixels) {
-        for (int y = 0; y < Height; y++) {
-            for (int x = 0; x < Width; x++) {
-                if (x == 0 && y == 0) {
+
+    public override PixelMap Draw(PixelMap pixels)
+    {
+        for (int y = 0; y < Height; y++)
+        {
+            for (int x = 0; x < Width; x++)
+            {
+                if (x == 0 && y == 0)
+                {
                     pixels.SetPixel(this, new Vector2i(x, y), new Pixel(tl, BG, FG));
-                } else if (x == Width - 1 && y == 0) {
+                }
+                else if (x == Width - 1 && y == 0)
+                {
                     pixels.SetPixel(this, new Vector2i(x, y), new Pixel(tr, BG, FG));
-                } else if (x == 0 && y == Height - 1) {
+                }
+                else if (x == 0 && y == Height - 1)
+                {
                     pixels.SetPixel(this, new Vector2i(x, y), new Pixel(bl, BG, FG));
-                } else if (x == Width - 1 && y == Height - 1) {
+                }
+                else if (x == Width - 1 && y == Height - 1)
+                {
                     pixels.SetPixel(this, new Vector2i(x, y), new Pixel(br, BG, FG));
-                } else if (x == 0 || x == Width - 1) {
+                }
+                else if (x == 0 || x == Width - 1)
+                {
                     pixels.SetPixel(this, new Vector2i(x, y), new Pixel(v, BG, FG));
-                } else if (y == 0 || y == Height - 1) {
+                }
+                else if (y == 0 || y == Height - 1)
+                {
                     pixels.SetPixel(this, new Vector2i(x, y), new Pixel(h, BG, FG));
                 }
             }

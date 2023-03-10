@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 namespace NSB.OS.Graphics.DisplayNS;
 
-public class Display {
+public class Display
+{
     public int Width { get; set; }
     public int Height { get; set; }
 
@@ -13,15 +14,18 @@ public class Display {
 
     public List<Element> Elements { get; set; }
 
-    public void AddElement(Element element) {
+    public void AddElement(Element element)
+    {
         Elements.Add(element);
     }
 
-    public void RemoveElement(Element element) {
+    public void RemoveElement(Element element)
+    {
         Elements.Remove(element);
     }
 
-    public Display(Vector2i position, Vector2i size) {
+    public Display(Vector2i position, Vector2i size)
+    {
         ViewX = position.X;
         ViewY = position.Y;
         Width = size.X;
@@ -32,14 +36,17 @@ public class Display {
 
     public Action Update { get; set; }
 
-    public PixelMap AllocPixels() {
+    public PixelMap AllocPixels()
+    {
         PixelMap Pixels = new PixelMap(Width, Height);
         return Pixels;
     }
 
-    public PixelMap GetPixels() {
+    public PixelMap GetPixels()
+    {
         PixelMap Pixels = AllocPixels();
-        foreach (Element element in Elements) {
+        foreach (Element element in Elements)
+        {
             Pixels = element.Draw(Pixels);
         }
         return Pixels;

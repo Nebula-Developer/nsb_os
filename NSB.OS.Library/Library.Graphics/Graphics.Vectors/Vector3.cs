@@ -1,18 +1,21 @@
 
 namespace NSB.OS.Graphics.Mathematics;
 
-public class Vector3 {
+public class Vector3
+{
     public float X { get; set; }
     public float Y { get; set; }
     public float Z { get; set; }
 
-    public Vector3() {
+    public Vector3()
+    {
         X = 0;
         Y = 0;
         Z = 0;
     }
 
-    public Vector3(float x, float y, float z) {
+    public Vector3(float x, float y, float z)
+    {
         X = x;
         Y = y;
         Z = z;
@@ -21,7 +24,8 @@ public class Vector3 {
     public int Length() => (int)Math.Sqrt(X * X + Y * Y + Z * Z);
     public float Distance(Vector3 other) => (this - other).Length();
     public Vector3 Normalize() => this / Length();
-    public Vector3 Rotate(float angle) {
+    public Vector3 Rotate(float angle)
+    {
         float rad = (float)(angle * Math.PI / 180);
         float cos = (float)Math.Cos(rad);
         float sin = (float)Math.Sin(rad);
@@ -54,18 +58,21 @@ public class Vector3 {
     public override string ToString() => $"({X}, {Y}, {Z})";
 }
 
-public class Vector3i {
+public class Vector3i
+{
     public int X { get; set; }
     public int Y { get; set; }
     public int Z { get; set; }
 
-    public Vector3i() {
+    public Vector3i()
+    {
         X = 0;
         Y = 0;
         Z = 0;
     }
 
-    public Vector3i(int x, int y, int z) {
+    public Vector3i(int x, int y, int z)
+    {
         X = x;
         Y = y;
         Z = z;
@@ -74,7 +81,8 @@ public class Vector3i {
     public int Length() => (int)Math.Sqrt(X * X + Y * Y + Z * Z);
     public float Distance(Vector3i other) => (this - other).Length();
     public Vector3i Normalize() => this / Length();
-    public Vector3i Rotate(float angle) {
+    public Vector3i Rotate(float angle)
+    {
         float rad = (float)(angle * Math.PI / 180);
         float cos = (float)Math.Cos(rad);
         float sin = (float)Math.Sin(rad);

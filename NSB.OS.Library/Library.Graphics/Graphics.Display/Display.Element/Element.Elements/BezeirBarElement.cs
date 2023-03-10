@@ -2,13 +2,15 @@ using NSB.OS.Graphics.Mathematics;
 
 namespace NSB.OS.Graphics.DisplayNS;
 
-public class BezeirBarElement : Element {
+public class BezeirBarElement : Element
+{
     public Vector2i start, end;
     public Vector2i[] points;
     public RGB? BG { get; set; }
     public RGB? FG { get; set; }
 
-    public BezeirBarElement(int x, int y, int x2, int y2, Vector2i[]? points = null, RGB? bg = null, RGB? fg = null) {
+    public BezeirBarElement(int x, int y, int x2, int y2, Vector2i[]? points = null, RGB? bg = null, RGB? fg = null)
+    {
         X = x;
         Y = y;
         start = new Vector2i(x, y);
@@ -18,7 +20,8 @@ public class BezeirBarElement : Element {
         FG = fg;
     }
 
-    public BezeirBarElement(Vector2i startPos, Vector2i endPos, Vector2i[]? points = null, RGB? bg = null, RGB? fg = null) {
+    public BezeirBarElement(Vector2i startPos, Vector2i endPos, Vector2i[]? points = null, RGB? bg = null, RGB? fg = null)
+    {
         X = startPos.X;
         Y = startPos.Y;
         start = startPos;

@@ -1,16 +1,19 @@
 
 namespace NSB.OS.Graphics.Mathematics;
 
-public class Vector2 {
+public class Vector2
+{
     public float X { get; set; }
     public float Y { get; set; }
 
-    public Vector2() {
+    public Vector2()
+    {
         X = 0;
         Y = 0;
     }
 
-    public Vector2(float x, float y) {
+    public Vector2(float x, float y)
+    {
         X = x;
         Y = y;
     }
@@ -18,7 +21,8 @@ public class Vector2 {
     public float Length() => (float)Math.Sqrt(X * X + Y * Y);
     public float Distance(Vector2 other) => (this - other).Length();
     public Vector2 Normalize() => this / Length();
-    public Vector2 Rotate(float angle) {
+    public Vector2 Rotate(float angle)
+    {
         float rad = (float)(angle * Math.PI / 180);
         float cos = (float)Math.Cos(rad);
         float sin = (float)Math.Sin(rad);
@@ -52,21 +56,25 @@ public class Vector2 {
     public override string ToString() => $"({X}, {Y})";
 }
 
-public class Vector2i {
+public class Vector2i
+{
     public int X { get; set; }
     public int Y { get; set; }
 
-    public Vector2i() {
+    public Vector2i()
+    {
         X = 0;
         Y = 0;
     }
 
-    public Vector2i(int x, int y) {
+    public Vector2i(int x, int y)
+    {
         X = x;
         Y = y;
     }
 
-    public Vector2i ToCharSquare() {
+    public Vector2i ToCharSquare()
+    {
         this.X = this.X * 2;
         return this;
     }
@@ -74,7 +82,8 @@ public class Vector2i {
     public int Length() => (int)Math.Sqrt(X * X + Y * Y);
     public int Distance(Vector2i other) => (this - other).Length();
     public Vector2i Normalize() => this / Length();
-    public Vector2i Rotate(int angle) {
+    public Vector2i Rotate(int angle)
+    {
         float rad = (float)(angle * Math.PI / 180);
         float cos = (float)Math.Cos(rad);
         float sin = (float)Math.Sin(rad);

@@ -36,11 +36,11 @@ class Program
         // Load and execute the selected app's Program.Run() method
         string selectedAssemblyFile = assemblyFiles[appNumber - 1];
         Assembly selectedAssembly = Assembly.LoadFrom(selectedAssemblyFile);
-        
+
         Type? programAType = selectedAssembly.GetType(selectedAssembly.GetName().Name + ".Program");
         MethodInfo? runMethod = programAType?.GetMethod("Run");
         if (runMethod != null) runMethod.Invoke(null, null);
-        
+
         Console.WriteLine("Press any key to exit.");
         Console.ReadKey();
     }
