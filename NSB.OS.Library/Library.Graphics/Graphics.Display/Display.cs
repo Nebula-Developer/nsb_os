@@ -39,6 +39,7 @@ public class Display {
     public PixelMap GetPixels() {
         PixelMap Pixels = AllocPixels();
         foreach (Element element in Elements) {
+            if (!element.Visible) continue;
             Pixels = element.Draw(Pixels);
         }
         return Pixels;
