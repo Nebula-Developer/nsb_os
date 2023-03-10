@@ -12,7 +12,22 @@ public class ProgramSelect : Display {
     private OutlineElement Outline;
     private TextElement Title;
     public CursorElement Cursor;
+    public List<ProgramExecutable> ProgramList = new List<ProgramExecutable>();
+    public List<TextElement> ProgramElements = new List<TextElement>();
     private RendererStack Renderer;
+
+    public void UpdateListing() {
+        foreach (TextElement element in ProgramElements) this.RemoveElement(element);
+        ProgramElements.Clear();
+
+        int i = 0;
+        foreach (ProgramExecutable program in ProgramList) {
+            TextElement element = new TextElement(0, 2 + i, program.name, TextConfig.Centered, null, new RGB(255, 255, 255));
+            ProgramElements.Add(element);
+            this.AddElement(element);
+            i++;
+        }
+    }
 
     public ProgramSelect(Vector2i position, Vector2i size, RendererStack renderer) : base(position, size) {
         Background = new RectangleElement(0, 0, this.Width, this.Height, new RGB(0, 0, 0), new RGB(0, 0, 0));
@@ -23,6 +38,13 @@ public class ProgramSelect : Display {
         this.AddElement(Background);
         this.AddElement(Outline);
         this.AddElement(Title);
+
+        foreach (ProgramExecutable program in Programs.ListApps(SystemDrives.BootDrive)) {
+            ProgramList.Add(program);
+        }
+
+        UpdateListing();
+
         this.AddElement(Cursor);
 
         Input.AddKeyAction(OnKeyPress);
@@ -34,6 +56,7 @@ public class ProgramSelect : Display {
         Input.KeyAvailable = false;
 
         ConsoleKeyInfo key = Input.Key;
+        bool fullRefresh = false;
 
         if (key.Key == ConsoleKey.W) {
             if (Cursor.Y > 1) Cursor.Y--;
@@ -43,10 +66,34 @@ public class ProgramSelect : Display {
             if (Cursor.X > 1) Cursor.X--;
         } else if (key.Key == ConsoleKey.D) {
             if (Cursor.X < this.Width - 2) Cursor.X++;
-        } else if (key.Key == ConsoleKey.Enter) {
+        } else if ((key.Key == ConsoleKey.Enter || key.Key == ConsoleKey.Spacebar) && Cursor.Y > 1 && Cursor.Y - 2 < ProgramList.Count) {
+            int textWidth = ProgramList[Cursor.Y - 2].name.Length;
+            int posStart = (this.Width / 2) - (textWidth / 2);
+            int posEnd = (this.Width / 2) + (textWidth / 2);
+            posEnd -= textWidth % 2 == 0 ? 1 : 0;
 
+            if (Cursor.X >= posStart && Cursor.X <= posEnd) {
+                ProgramExecutable program = ProgramList[Cursor.Y - 2];
+                Programs.RunProgramExecutable(program);
+                fullRefresh = true;
+            }
+        } else if (key.Key == ConsoleKey.Tab) {
+            if (Cursor.Y > 1 && Cursor.Y - 2 < ProgramList.Count) {
+                int curIndex = Cursor.Y - 1 > ProgramList.Count - 1 ? 0 : Cursor.Y - 1;
+                ProgramExecutable program = ProgramList[curIndex % ProgramList.Count];
+                int textWidth = program.name.Length;
+                int posStart = (this.Width / 2) - (textWidth / 2);
+                Cursor.X = posStart;
+                Cursor.Y = curIndex + 2;
+            } else {
+                ProgramExecutable program = ProgramList[0];
+                int textWidth = program.name.Length;
+                int posStart = (this.Width / 2) - (textWidth / 2);
+                Cursor.X = posStart;
+                Cursor.Y = 2;
+            }
         }
 
-        Renderer.Render();
+        Renderer.Render(fullRefresh);
     }
 }

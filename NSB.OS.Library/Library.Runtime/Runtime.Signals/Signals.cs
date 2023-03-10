@@ -15,13 +15,13 @@ public static class Signals {
     // Signal handler function
     static void sighandler(int sig) {
         // Reset the signal handler to catch the signal next time
-        signal(sig, Marshal.GetFunctionPointerForDelegate(handler));
+        signal(sig, Marshal.GetFunctionPointerForDelegate(handler ?? throw new InvalidOperationException()));
 
         Console.WriteLine("Cannot execute Ctrl+Z");
     }
 
     // Global variable to hold a reference to the signal handler delegate
-    static SignalHandler handler;
+    static SignalHandler? handler;
 
     public static void CancelAll() {
         // Assign the signal handler delegate to the global variable

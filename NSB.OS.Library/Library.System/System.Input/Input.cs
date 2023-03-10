@@ -17,7 +17,9 @@ public static class Input {
             ConsoleKeyInfo key = Console.ReadKey(true);
             Key = key;
             KeyAvailable = true;
-            foreach (Action action in KeyActions) action();
+            foreach (Action action in KeyActions) {
+                action();
+            }
         }
     }
 
