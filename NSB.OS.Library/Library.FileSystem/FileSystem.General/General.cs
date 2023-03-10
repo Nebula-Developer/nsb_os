@@ -14,7 +14,7 @@ public class NSFile {
     public string Extension => System.IO.Path.GetExtension(Path);
 
     public string Text => System.IO.File.ReadAllText(Path);
-    public string[] Lines  => System.IO.File.ReadAllLines(Path);
+    public string[] Lines => System.IO.File.ReadAllLines(Path);
     public int Bytes => System.IO.File.ReadAllBytes(Path).Length;
     public System.IO.FileInfo Info => new(Path);
     public bool Exists() => System.IO.File.Exists(Path);

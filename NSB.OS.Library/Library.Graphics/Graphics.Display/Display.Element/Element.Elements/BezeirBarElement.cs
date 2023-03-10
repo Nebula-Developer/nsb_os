@@ -28,23 +28,19 @@ public class BezeirBarElement : Element {
         FG = fg;
     }
 
-    public override PixelMap Draw(PixelMap pixels)
-    {
+    public override PixelMap Draw(PixelMap pixels) {
         float t = 0;
         Vector2 old = new Vector2(start.X, start.Y);
         Vector2[] newPoints = new Vector2[points.Length + 2];
         newPoints[0] = new Vector2(start.X, start.Y);
         newPoints[newPoints.Length - 1] = new Vector2(end.X, end.Y);
-        for (int i = 1; i < newPoints.Length - 1; i++)
-        {
+        for (int i = 1; i < newPoints.Length - 1; i++) {
             newPoints[i] = new Vector2(points[i - 1].X, points[i - 1].Y);
         }
 
-        while (t <= 1)
-        {
+        while (t <= 1) {
             Vector2 current = new Vector2(newPoints[0].X, newPoints[0].Y) * (float)Math.Pow(1 - t, newPoints.Length) * (float)Math.Pow(t, 0);
-            for (int i = 1; i < newPoints.Length; i++)
-            {
+            for (int i = 1; i < newPoints.Length; i++) {
                 current += new Vector2(newPoints[i].X, newPoints[i].Y) * (float)Math.Pow(1 - t, newPoints.Length - i) * (float)Math.Pow(t, i);
             }
             current += new Vector2(end.X, end.Y) * (float)Math.Pow(1 - t, newPoints.Length) * (float)Math.Pow(t, 0);

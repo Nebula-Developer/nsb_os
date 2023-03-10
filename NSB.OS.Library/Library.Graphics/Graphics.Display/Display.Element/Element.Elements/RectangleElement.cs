@@ -25,7 +25,7 @@ public class RectangleElement : Element {
         BG = bg;
         FG = fg;
     }
-    
+
     public override PixelMap Draw(PixelMap pixels) {
         for (int y = 0; y < Height; y++) {
             for (int x = 0; x < Width; x++) {

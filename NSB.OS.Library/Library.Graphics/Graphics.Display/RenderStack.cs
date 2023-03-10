@@ -125,7 +125,7 @@ public class RendererStack {
                     Thread.Sleep((int)(1000 / this.Config.RenderFrequency - time));
                     pastRender = DateTime.Now;
                 } else Thread.Sleep(1000 / this.Config.RenderFrequency);
-                
+
                 renderKill = () => {
                     isLoopRendering = false;
                 };

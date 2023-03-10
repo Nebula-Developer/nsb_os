@@ -5,7 +5,7 @@ public class Drive : FS {
     public string Label { get; set; }
     public string Path => FSPath.Combine(FSPath.Root, Label);
     public override string GetPath(string path) => FSPath.Combine(Path, path.TrimStart('/'));
-    
+
     new public DriveFile GetFile(string path) => new(this, GetPath(path));
     new public DriveDir GetDir(string path) => new(this, GetPath(path));
 

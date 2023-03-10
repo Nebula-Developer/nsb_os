@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using NSB.OS.FileSystem;
@@ -19,7 +20,7 @@ public class ProgramExecutable {
 public static class Programs {
     public static List<ProgramExecutable> ListApps(Drive drive) {
         string searchPath = drive.GetPath("/Users/Shared/Programs");
-    
+
         if (!Directory.Exists(searchPath)) {
             Directory.CreateDirectory(searchPath);
             return new List<ProgramExecutable>();
@@ -28,8 +29,7 @@ public static class Programs {
         string[] assemblyFiles = Directory.GetFiles(searchPath, "*.dll");
         List<ProgramExecutable> programExecutables = new List<ProgramExecutable>();
 
-        for (int i = 0; i < assemblyFiles.Length; i++)
-        {
+        for (int i = 0; i < assemblyFiles.Length; i++) {
             string assemblyFile = assemblyFiles[i];
             Assembly assembly = Assembly.LoadFrom(assemblyFile);
             programExecutables.Add(new ProgramExecutable(assembly.GetName().Name ?? assembly.GetName().FullName, assembly));
@@ -40,24 +40,24 @@ public static class Programs {
 
     public static ProgramReturn RunProgramExecutable(ProgramExecutable programExecutable) {
         ProgramReturn returns = new ProgramReturn(0, null);
-        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        
-        Thread thread = new Thread(() => {
-            Type? programAType = programExecutable.assembly.GetType(programExecutable.assembly.GetName().Name + ".Program");
-            MethodInfo? runMethod = programAType?.GetMethod("Run");
-            
-            if (programAType == null || runMethod == null) returns = new ProgramReturn(1, new Exception("Program: " + programExecutable.name + " does not have a Program.Run() method."));
-            object? a;
 
-            try {
-                a = runMethod?.Invoke(null, null);
-                returns = new ProgramReturn(0, null);
-            } catch (TargetInvocationException e) {
+        Type? programAType = programExecutable.assembly.GetType(programExecutable.assembly.GetName().Name + ".Program");
+        MethodInfo? runMethod = programAType?.GetMethod("Run");
+
+        if (programAType == null || runMethod == null) returns = new ProgramReturn(1, new Exception("Program: " + programExecutable.name + " does not have a Program.Run() method."));
+        object? a;
+
+        try {
+            a = runMethod?.Invoke(null, null);
+            returns = new ProgramReturn(0, null);
+        } catch (TargetInvocationException e) {
+            if (e.InnerException is TargetParameterCountException) {
+                returns = new ProgramReturn(1, new Exception("Program: " + programExecutable.name + " does not have a Program.Run(CancellationToken) method."));
+            } else {
                 returns = new ProgramReturn(1, e.InnerException);
             }
-        });
-        thread.Start();
-        thread.Join();
+        }
+
         return returns;
     }
 }

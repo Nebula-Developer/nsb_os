@@ -19,7 +19,7 @@ public class Pixel {
     public string ToFGEsc() => FG != null ? $"\x1b[38;2;{FG.R};{FG.G};{FG.B}m" : "";
 
     public override string ToString() {
-        return $"{ToBGEsc()}{ToFGEsc()}{Character ?? ' '}\x1b[0m";   
+        return $"{ToBGEsc()}{ToFGEsc()}{Character ?? ' '}\x1b[0m";
     }
 
     // == and !=
