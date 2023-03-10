@@ -26,9 +26,17 @@ public class Database {
             if (!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(RelativePath) ?? "/")) return;
             System.IO.File.Create(RelativePath);
         }
-        Data = JsonSerializer.Deserialize<Dictionary<string, object?>>(System.IO.File.ReadAllText(RelativePath)) ?? new Dictionary<string, object?>();
+
+        try {
+            Data = JsonSerializer.Deserialize<Dictionary<string, object?>>(System.IO.File.ReadAllText(RelativePath)) ?? new Dictionary<string, object?>();
+        } catch {
+            Data = new Dictionary<string, object?>();
+        }
+
         // Also add the data of 'this'
         Data[".nsb-db"] = Switch(this, "Data");
+
+        this.Save();
     }
 
     public static Dictionary<string, object?>? Switch(dynamic a, params string[] ignoreKeys) {
@@ -49,12 +57,10 @@ public class Database {
 
     public void Set(string key, object? value, bool save = true) {
         Data[key] = value;
-        if (save) Save();
+        if (save) this.Save();
     }
 
-    public object? Get(string key) {
-        return Data.ContainsKey(key) ? Data[key] : null;
-    }
+    public object? Get(string key) => Data.ContainsKey(key) ? Data[key] : null;
 
     public void Save() {
         if (PathFromDrive) {

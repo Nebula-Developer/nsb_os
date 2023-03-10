@@ -34,8 +34,6 @@ public static class Accounts {
         CurrentAccount = account;
     }
 
-    /// Example:
-    /// GetAccount(new { Username = "admin", Password = "admin" })
     public static Account? GetAccount(object match) {
         List<Account> accounts = GetAccounts ?? new List<Account>();
         foreach (Account account in accounts) {

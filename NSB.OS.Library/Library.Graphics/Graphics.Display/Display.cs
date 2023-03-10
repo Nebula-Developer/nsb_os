@@ -26,11 +26,10 @@ public class Display {
         ViewY = position.Y;
         Width = size.X;
         Height = size.Y;
-        Update = () => { };
         Elements = new List<Element>();
     }
 
-    public Action Update { get; set; }
+    public virtual void Update() { }
 
     public PixelMap AllocPixels() {
         PixelMap Pixels = new PixelMap(Width, Height);
