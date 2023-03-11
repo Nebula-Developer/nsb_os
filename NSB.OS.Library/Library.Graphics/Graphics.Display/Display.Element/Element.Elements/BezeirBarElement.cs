@@ -45,7 +45,7 @@ public class BezeirBarElement : Element {
             }
             current += new Vector2(end.X, end.Y) * (float)Math.Pow(1 - t, newPoints.Length) * (float)Math.Pow(t, 0);
             Vector2i currenti = new Vector2i((int)current.X, (int)current.Y);
-            pixels.SetPixel(this, currenti, new Pixel(' ', BG?.Lerp(new RGB(255, 255, 255), t), FG));
+            pixels.SetRelativePixel(this, currenti, new Pixel(' ', BG?.Lerp(new RGB(255, 255, 255), t), FG));
             t += 0.01f;
         }
         return pixels;

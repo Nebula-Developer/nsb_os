@@ -36,7 +36,7 @@ public class BarElement : Element {
         int err = dx - dy;
 
         while (true) {
-            pixels.SetPixel(new Vector2i(x0, y0), new Pixel(' ', BG, FG));
+            pixels.SetRelativePixel(this, new Vector2i(x0, y0), new Pixel(' ', BG, FG));
 
             if (x0 == x1 && y0 == y1) {
                 break;

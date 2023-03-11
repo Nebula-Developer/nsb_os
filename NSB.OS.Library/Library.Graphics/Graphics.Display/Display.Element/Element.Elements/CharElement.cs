@@ -24,7 +24,7 @@ public class CharElement : Element {
     }
 
     public override PixelMap Draw(PixelMap pixels) {
-        pixels.SetPixel(this, new Vector2i(0, 0), new Pixel(Character, BG, FG));
+        pixels.SetRelativePixel(this, new Vector2i(0, 0), new Pixel(Character, BG, FG));
         return pixels;
     }
 }

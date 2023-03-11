@@ -37,17 +37,17 @@ public class OutlineElement : Element {
         for (int y = 0; y < Height; y++) {
             for (int x = 0; x < Width; x++) {
                 if (x == 0 && y == 0) {
-                    pixels.SetPixel(this, new Vector2i(x, y), new Pixel(tl, BG, FG));
+                    pixels.SetRelativePixel(this, new Vector2i(x, y), new Pixel(tl, BG, FG));
                 } else if (x == Width - 1 && y == 0) {
-                    pixels.SetPixel(this, new Vector2i(x, y), new Pixel(tr, BG, FG));
+                    pixels.SetRelativePixel(this, new Vector2i(x, y), new Pixel(tr, BG, FG));
                 } else if (x == 0 && y == Height - 1) {
-                    pixels.SetPixel(this, new Vector2i(x, y), new Pixel(bl, BG, FG));
+                    pixels.SetRelativePixel(this, new Vector2i(x, y), new Pixel(bl, BG, FG));
                 } else if (x == Width - 1 && y == Height - 1) {
-                    pixels.SetPixel(this, new Vector2i(x, y), new Pixel(br, BG, FG));
+                    pixels.SetRelativePixel(this, new Vector2i(x, y), new Pixel(br, BG, FG));
                 } else if (x == 0 || x == Width - 1) {
-                    pixels.SetPixel(this, new Vector2i(x, y), new Pixel(v, BG, FG));
+                    pixels.SetRelativePixel(this, new Vector2i(x, y), new Pixel(v, BG, FG));
                 } else if (y == 0 || y == Height - 1) {
-                    pixels.SetPixel(this, new Vector2i(x, y), new Pixel(h, BG, FG));
+                    pixels.SetRelativePixel(this, new Vector2i(x, y), new Pixel(h, BG, FG));
                 }
             }
         }

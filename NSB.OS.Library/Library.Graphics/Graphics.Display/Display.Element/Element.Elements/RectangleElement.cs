@@ -29,7 +29,7 @@ public class RectangleElement : Element {
     public override PixelMap Draw(PixelMap pixels) {
         for (int y = 0; y < Height; y++) {
             for (int x = 0; x < Width; x++) {
-                pixels.SetPixel(this, new Vector2i(x, y), new Pixel(' ', BG, FG));
+                pixels.SetRelativePixel(this, new Vector2i(x, y), new Pixel(' ', BG, FG));
             }
         }
         return pixels;

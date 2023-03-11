@@ -19,7 +19,7 @@ public class PixelMap {
                 Pixels[x, y] = new Pixel(' ', null, null);
     }
 
-    public void SetPixel(Element element, Vector2i position, Pixel pixel) {
+    public void SetRelativePixel(Element element, Vector2i position, Pixel pixel) {
         if (element.X + position.X < 0 || element.X + position.X >= Width) return;
         if (element.Y + position.Y < 0 || element.Y + position.Y >= Height) return;
         if (pixel.Character != null) Pixels[element.X + position.X, element.Y + position.Y].Character = pixel.Character;

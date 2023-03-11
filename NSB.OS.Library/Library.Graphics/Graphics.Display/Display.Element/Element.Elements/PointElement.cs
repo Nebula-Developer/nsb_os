@@ -21,7 +21,7 @@ public class PointElement : Element {
     }
 
     public override PixelMap Draw(PixelMap pixels) {
-        pixels.SetPixel(this, new Vector2i(0, 0), new Pixel(' ', BG, FG));
+        pixels.SetRelativePixel(this, new Vector2i(0, 0), new Pixel(' ', BG, FG));
         return pixels;
     }
 }

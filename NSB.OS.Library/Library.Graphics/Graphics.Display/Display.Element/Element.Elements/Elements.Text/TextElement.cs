@@ -78,7 +78,7 @@ public class TextElement : Element {
         }
         for (int i = 0; i < Text.Length; i++) {
             if (Y + i < 0 || Y + i >= pixels.Height) continue;
-            pixels.SetPixel(this, new Vector2i(0, Y + i + start), new Pixel(Text[i], BG, FG));
+            pixels.SetRelativePixel(this, new Vector2i(0, Y + i + start), new Pixel(Text[i], BG, FG));
         }
         return pixels;
     }
