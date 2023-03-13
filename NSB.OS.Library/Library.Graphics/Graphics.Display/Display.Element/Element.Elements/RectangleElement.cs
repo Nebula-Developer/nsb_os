@@ -5,8 +5,6 @@ namespace NSB.OS.Graphics.DisplayNS;
 public class RectangleElement : Element {
     public int Width { get; set; }
     public int Height { get; set; }
-    public RGB? BG { get; set; }
-    public RGB? FG { get; set; }
 
     public RectangleElement(int x, int y, int width, int height, RGB? bg = null, RGB? fg = null) : base(x, y, bg, fg) {
         Width = width;

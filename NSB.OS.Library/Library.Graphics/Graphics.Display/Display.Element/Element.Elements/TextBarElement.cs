@@ -4,8 +4,6 @@ namespace NSB.OS.Graphics.DisplayNS;
 
 public class CharBarElement : Element {
     public Vector2i start, end;
-    public RGB? BG { get; set; }
-    public RGB? FG { get; set; }
     public char Character { get; set; }
 
 
