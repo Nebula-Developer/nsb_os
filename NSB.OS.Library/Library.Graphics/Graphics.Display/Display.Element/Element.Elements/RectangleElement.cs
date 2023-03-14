@@ -8,22 +8,14 @@ public class RectangleElement : Element {
     public RGB? BG { get; set; }
     public RGB? FG { get; set; }
 
-    public RectangleElement(int x, int y, int width, int height, RGB? bg = null, RGB? fg = null) {
-        this.X = x;
-        this.Y = y;
+    public RectangleElement(int x, int y, int width, int height, RGB? bg = null, RGB? fg = null) : base(x, y, bg, fg) {
         Width = width;
         Height = height;
-        BG = bg;
-        FG = fg;
     }
 
-    public RectangleElement(Vector2i pos, int width, int height, RGB? bg = null, RGB? fg = null) {
-        this.X = pos.X;
-        this.Y = pos.Y;
+    public RectangleElement(Vector2i pos, int width, int height, RGB? bg = null, RGB? fg = null) : base(pos, bg, fg) {
         Width = width;
         Height = height;
-        BG = bg;
-        FG = fg;
     }
 
     public override PixelMap Draw(PixelMap pixels) {

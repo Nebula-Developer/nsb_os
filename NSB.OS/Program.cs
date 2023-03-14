@@ -22,6 +22,7 @@ public static class OS
             return;
         }
 
+        Console.CursorVisible = false;
         RendererStack renderer = new RendererStack();
         Login login = new Login(new Vector2i(0, 0), new Vector2i(80, Math.Min(Console.WindowHeight, 25)), renderer);
         renderer.AddDisplay(login);

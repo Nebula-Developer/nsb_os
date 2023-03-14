@@ -21,5 +21,4 @@
     </PackageReference>
     <ProjectReference Include="..\NSB.OS.Library\NSB.OS.Library.csproj" />
   </ItemGroup>
-
 </Project>

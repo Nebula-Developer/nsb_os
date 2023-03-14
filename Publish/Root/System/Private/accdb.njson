@@ -1,0 +1,28 @@
+{
+  ".nsb-db": {
+    "Path": "System/Private/accdb.njson",
+    "RelativePath": "/home/nebuladev/Documents/nsb_os/Publish/Root/System/Private/accdb.njson",
+    "PathFromDrive": true,
+    "Drive": {
+      "Label": "Root",
+      "Path": "/home/nebuladev/Documents/nsb_os/Publish/Root"
+    }
+  },
+  "Accounts": [
+    {
+      "Username": "admin",
+      "Password": "admin",
+      "Optionals": {
+        "FirstName": "Administrator",
+        "LastName": null,
+        "Email": null,
+        "Phone": null,
+        "Address": null,
+        "City": null,
+        "State": null,
+        "Zip": null,
+        "Country": null
+      }
+    }
+  ]
+}

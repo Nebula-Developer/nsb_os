@@ -5,8 +5,6 @@ namespace NSB.OS.Graphics.DisplayNS;
 public class OutlineElement : Element {
     public int Width { get; set; }
     public int Height { get; set; }
-    public RGB? BG { get; set; }
-    public RGB? FG { get; set; }
 
     public char tl = '┌';
     public char tr = '┐';
@@ -15,22 +13,14 @@ public class OutlineElement : Element {
     public char h = '─';
     public char v = '│';
 
-    public OutlineElement(int x, int y, int width, int height, RGB? bg = null, RGB? fg = null) {
-        this.X = x;
-        this.Y = y;
+    public OutlineElement(int x, int y, int width, int height, RGB? bg = null, RGB? fg = null) : base(x, y, bg, fg) {
         Width = width;
         Height = height;
-        BG = bg;
-        FG = fg;
     }
 
-    public OutlineElement(Vector2i pos, int width, int height, RGB? bg = null, RGB? fg = null) {
-        this.X = pos.X;
-        this.Y = pos.Y;
+    public OutlineElement(Vector2i pos, int width, int height, RGB? bg = null, RGB? fg = null) : base(pos, bg, fg) {
         Width = width;
         Height = height;
-        BG = bg;
-        FG = fg;
     }
 
     public override PixelMap Draw(PixelMap pixels) {

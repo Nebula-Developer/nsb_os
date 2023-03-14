@@ -2,31 +2,23 @@ using NSB.OS.Graphics.Mathematics;
 
 namespace NSB.OS.Graphics.DisplayNS;
 
-public class TextBarElement : Element {
+public class CharBarElement : Element {
     public Vector2i start, end;
     public RGB? BG { get; set; }
     public RGB? FG { get; set; }
     public char Character { get; set; }
 
 
-    public TextBarElement(int x, int y, int x2, int y2, char character, RGB? bg = null, RGB? fg = null) {
-        this.X = x;
-        this.Y = y;
+    public CharBarElement(int x, int y, int x2, int y2, char character, RGB? bg = null, RGB? fg = null) : base(x, y, bg, fg) {
         start = new Vector2i(x, y);
         end = new Vector2i(x2, y2);
         Character = character;
-        BG = bg;
-        FG = fg;
     }
 
-    public TextBarElement(Vector2i startPos, Vector2i endPos, char character, RGB? bg = null, RGB? fg = null) {
-        this.X = startPos.X;
-        this.Y = startPos.Y;
+    public CharBarElement(Vector2i startPos, Vector2i endPos, char character, RGB? bg = null, RGB? fg = null) : base(startPos, bg, fg) {
         start = startPos;
         end = endPos;
         Character = character;
-        BG = bg;
-        FG = fg;
     }
 
     public override PixelMap Draw(PixelMap pixels) {
