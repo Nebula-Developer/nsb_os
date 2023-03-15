@@ -1,11 +1,11 @@
 {
   ".nsb-db": {
     "Path": "System/Private/accdb.njson",
-    "RelativePath": "/home/nebuladev/Documents/nsb_os/Publish/Root/System/Private/accdb.njson",
+    "RelativePath": "/Users/nicocook/Documents/nsb_os/Publish/Root/System/Private/accdb.njson",
     "PathFromDrive": true,
     "Drive": {
       "Label": "Root",
-      "Path": "/home/nebuladev/Documents/nsb_os/Publish/Root"
+      "Path": "/Users/nicocook/Documents/nsb_os/Publish/Root"
     }
   },
   "Accounts": [

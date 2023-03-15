@@ -1,12 +1,13 @@
 using NSB.OS.Graphics.Mathematics;
 using NSB.OS.Graphics;
 using System.Collections.Generic;
+using NSB.OS.Logic.Variables;
 
 namespace NSB.OS.Graphics.DisplayNS;
 
 public class Display {
-    public int Width { get; set; }
-    public int Height { get; set; }
+    public DependentVariable Width { get; set; }
+    public DependentVariable Height { get; set; }
 
     public int ViewX { get; set; }
     public int ViewY { get; set; }
@@ -24,8 +25,8 @@ public class Display {
     public Display(Vector2i position, Vector2i size) {
         ViewX = position.X;
         ViewY = position.Y;
-        Width = size.X;
-        Height = size.Y;
+        Width = new DependentVariable(size.X);
+        Height = new DependentVariable(size.Y);
         Elements = new List<Element>();
     }
 

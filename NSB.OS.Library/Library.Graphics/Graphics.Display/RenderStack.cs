@@ -9,6 +9,8 @@ public class RendererConfig {
     public bool UseIdealRenderFrequency { get; set; } = true;
     public bool UseThreadedRender { get; set; } = true;
     public bool UseManagedThreadedRender { get; set; } = true;
+    public bool UseComparisonRenderer { get; set; } = true;
+    public bool UseFrequencyRenderer { get; set; } = true;
 }
 
 public class RendererStack {
@@ -49,7 +51,7 @@ public class RendererStack {
 
     private Pixel[,] oldBuffer = new Pixel[0, 0];
 
-    public void Render(bool refresh = false) {
+    public Pixel[,] Render(bool refresh = false) {
         Pixel[,] buffer = GetDisplayData();
         // Get the differences and only print what we have to
         Console.Write("\x1b[0;0H");
@@ -74,6 +76,7 @@ public class RendererStack {
             if (drawAll && y != buffer.GetLength(0) - 1) Console.Write("\n");
         }
         oldBuffer = buffer;
+        return buffer;
     }
 
     public RendererStack(params Display[] displays) {
@@ -99,39 +102,49 @@ public class RendererStack {
 
         renderThread = new Thread(() => {
             bool isLoopRendering = true;
-            while (isLoopRendering) {
-                fpsNow = DateTime.Now;
+            Pixel[,] oldBuffer = new Pixel[0, 0];
+            if (this.Config.UseFrequencyRenderer) {
+                while (isLoopRendering) {
+                    fpsNow = DateTime.Now;
 
-                if (this.Config.UseThreadedRender) {
-                    if (this.Config.UseManagedThreadedRender) {
-                        ThreadManager.ThreadCall(() => {
-                            this.Render();
-                        }).Catch((e) => {
-                            Console.WriteLine("Failed to render: " + e.ToString());
-                            Environment.Exit(1);
-                        });
+                    if (this.Config.UseThreadedRender) {
+                        if (this.Config.UseManagedThreadedRender) {
+                            ThreadManager.ThreadCall(() => {
+                                if (this.Config.UseComparisonRenderer && this.GetDisplayData() == oldBuffer) return;
+                                oldBuffer = this.Render();
+                            }).Catch((e) => {
+                                Console.WriteLine("Failed to render: " + e.ToString());
+                                Environment.Exit(1);
+                            });
+                        } else {
+                            new Thread(() => {
+                                this.Render();
+                            }).Start();
+                        }
                     } else {
-                        new Thread(() => {
-                            this.Render();
-                        }).Start();
+                        this.Render();
                     }
-                } else {
-                    this.Render();
+
+                    if (this.Config.UseIdealRenderFrequency) {
+                        double time = (DateTime.Now - pastRender).TotalMilliseconds;
+                        if (((1000 / this.Config.RenderFrequency) - time) < 0) time = 0;
+                        Thread.Sleep((int)(1000 / this.Config.RenderFrequency - time));
+                        pastRender = DateTime.Now;
+                    } else Thread.Sleep(1000 / this.Config.RenderFrequency);
+                    renderKill = () => { isLoopRendering = false; };
+
+                    fpsPast = DateTime.Now;
+                    FPS = (int)(1000 / (fpsPast - fpsNow).TotalMilliseconds);
                 }
-
-                if (this.Config.UseIdealRenderFrequency) {
-                    double time = (DateTime.Now - pastRender).TotalMilliseconds;
-                    if (((1000 / this.Config.RenderFrequency) - time) < 0) time = 0;
-                    Thread.Sleep((int)(1000 / this.Config.RenderFrequency - time));
-                    pastRender = DateTime.Now;
-                } else Thread.Sleep(1000 / this.Config.RenderFrequency);
-
-                renderKill = () => {
-                    isLoopRendering = false;
-                };
-
-                fpsPast = DateTime.Now;
-                FPS = (int)(1000 / (fpsPast - fpsNow).TotalMilliseconds);
+            } else {
+                ManualResetEvent renderEvent = new ManualResetEvent(false);
+                while (isLoopRendering) {
+                    renderEvent.WaitOne();
+                    renderEvent.Reset();
+                    renderKill = () => { isLoopRendering = false; };
+                    if (this.GetDisplayData() == oldBuffer) continue;
+                    oldBuffer = this.Render();
+                }
             }
         });
         renderThread.Start();
