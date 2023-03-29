@@ -2,11 +2,9 @@ using NSB.OS.Runtime.Tests;
 
 namespace NSB.OS.Tests;
 
-public class ScreenTests
-{
+public class ScreenTests {
     [Fact]
-    public void LinkTest()
-    {
+    public void LinkTest() {
         Console.WriteLine("Running print link test");
         Link.TestLink();
         Console.WriteLine("Done");
