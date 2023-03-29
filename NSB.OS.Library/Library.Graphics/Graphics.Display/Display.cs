@@ -33,7 +33,7 @@ public class Display {
     public virtual void Update() { }
 
     public PixelMap AllocPixels() {
-        PixelMap Pixels = new PixelMap(Width, Height);
+        PixelMap Pixels = new(Width, Height);
         return Pixels;
     }
 

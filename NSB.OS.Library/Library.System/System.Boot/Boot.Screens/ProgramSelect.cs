@@ -39,7 +39,7 @@ public class ProgramSelect : Display {
 
         int i = 0;
         foreach (ProgramExecutable program in ProgramList) {
-            TextElement element = new TextElement(0, 2 + i, program.name, TextConfig.Centered, null, new RGB(255, 255, 255));
+            TextElement element = new(0, 2 + i, program.name, TextConfig.Centered, null, new RGB(255, 255, 255));
             ProgramElements.Add(element);
             this.AddElement(element);
             i++;
@@ -95,7 +95,7 @@ public class ProgramSelect : Display {
                 Console.Write("\x1b[?1049h");
                 Console.Clear();
 
-                ProgramReturn programReturn = new ProgramReturn(1, null);
+                ProgramReturn programReturn = new(1, null);
                 Exception? exp = null;
 
                 try {

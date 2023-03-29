@@ -59,7 +59,7 @@ public class RendererStack {
 
         for (int y = 0; y < buffer.GetLength(0); y++) {
             for (int x = 0; x < buffer.GetLength(1); x++) {
-                Pixel nullPixel = new Pixel();
+                Pixel nullPixel = new();
                 if (buffer[y, x] == nullPixel) continue;
                 string toString = buffer[y, x].ToString();
                 if (drawAll) {
@@ -137,7 +137,7 @@ public class RendererStack {
                     FPS = (int)(1000 / (fpsPast - fpsNow).TotalMilliseconds);
                 }
             } else {
-                ManualResetEvent renderEvent = new ManualResetEvent(false);
+                ManualResetEvent renderEvent = new(false);
                 while (isLoopRendering) {
                     renderEvent.WaitOne();
                     renderEvent.Reset();

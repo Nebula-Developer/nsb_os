@@ -6,7 +6,11 @@ namespace NSB.OS.Logic.Threads;
 
 public static class ThreadManager {
     public static ThreadCall ThreadCall(Action threadFunc) {
-        ThreadCall tc = new ThreadCall(threadFunc, () => { }, (e) => { });
+        ThreadCall tc = new(threadFunc, () =>
+{
+}, (e) =>
+{
+});
         return tc;
     }
 }
@@ -34,14 +38,18 @@ public class ThreadCall {
     }
 
     private void Start() {
-        Thread t = new Thread(() => {
-            try {
-                ThreadFunc();
-                ThenFunc();
-            } catch (Exception e) {
-                CatchFunc(e);
-            }
-        });
+        Thread t = new(() =>
+{
+    try
+    {
+        ThreadFunc();
+        ThenFunc();
+    }
+    catch (Exception e)
+    {
+        CatchFunc(e);
+    }
+});
         t.Start();
     }
 }

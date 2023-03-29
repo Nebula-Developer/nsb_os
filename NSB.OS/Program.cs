@@ -1,4 +1,4 @@
-﻿using NSB.OS.Graphics.DisplayNS;
+using NSB.OS.Graphics.DisplayNS;
 using NSB.OS.Graphics.Mathematics;
 using NSB.OS.Runtime.Tests;
 using NSB.OS.FileSystem;
@@ -23,8 +23,8 @@ public static class OS
         }
 
         Console.CursorVisible = false;
-        RendererStack renderer = new RendererStack();
-        Login login = new Login(new Vector2i(0, 0), new Vector2i(80, Math.Min(Console.WindowHeight, 25)), renderer);
+        RendererStack renderer = new();
+        Login login = new(new Vector2i(0, 0), new Vector2i(80, Math.Min(Console.WindowHeight, 25)), renderer);
         renderer.AddDisplay(login);
         // ProgramSelect programSelect = new ProgramSelect(new Vector2i(0, 0), new Vector2i(80, Math.Min(Console.WindowHeight, 25)), renderer);
         // renderer.AddDisplay(programSelect);
