@@ -7,7 +7,7 @@ using System.Text.Json;
 namespace NSB.OS.Logic.AccountsNS;
 
 public static class Accounts {
-    public static Database Database = new Database("System/Private/accdb.njson", true, SystemDrives.BootDrive);
+    public static Database Database = new("System/Private/accdb.njson", true, SystemDrives.BootDrive);
     public static List<Account>? GetAccounts => Database.Cast<List<Account>>("Accounts");
     public static Account? CurrentAccount = null;
 

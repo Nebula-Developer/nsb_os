@@ -16,23 +16,10 @@ public static class FSInit {
         }
     }
 
-    private static FSTemplate rootTemplate = new FSTemplate() {
-        DirectoryTree = new() {
-            "System", "System/Private", "System/Data", "System/Test",
-            "Temp",
-            "Users", "Users/Shared",
-            "Config", "Config/Themes", "Config/Themes/Default",
-            "Config/Preferences", "Config/Rules", "Config/LoadScripts"
-        },
-        FileData = new() {
-            new("System/Private/lock", "0"),
-            new("System/Test/firstload", "1"),
-            new("Temp/firstload", "1"),
-            new("Config/Themes/Default/Theme.json", "{}"),
-            new("Config/Preferences/Preferences.json", "{\"os\": {\"theme\": \"Default\"}}"),
-            new("Config/Rules/Rules.json", "{}"),
-            new("Config/LoadScripts/script1.nsc", "print(\"Hello World!\");")
-        }
+    private static FSTemplate rootTemplate = new() {
+        DirectoryTree = new()
+{ "System", "System/Private", "System/Data", "System/Test", "Temp", "Users", "Users/Shared", "Config", "Config/Themes", "Config/Themes/Default", "Config/Preferences", "Config/Rules", "Config/LoadScripts" }, FileData = new()
+{ new("System/Private/lock", "0"), new("System/Test/firstload", "1"), new("Temp/firstload", "1"), new("Config/Themes/Default/Theme.json", "{}"), new("Config/Preferences/Preferences.json", "{\"os\": {\"theme\": \"Default\"}}"), new("Config/Rules/Rules.json", "{}"), new("Config/LoadScripts/script1.nsc", "print(\"Hello World!\");") }
     };
 
     public static void Initialize(Drive drive) => rootTemplate.SplashTemplate(drive);

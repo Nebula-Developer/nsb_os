@@ -23,7 +23,7 @@ public class Login : Display {
 
         int i = 0;
         foreach (Account program in AccountList) {
-            TextElement element = new TextElement(0, 2 + i, program.Username, TextConfig.Centered, null, new RGB(255, 255, 255));
+            TextElement element = new(0, 2 + i, program.Username, TextConfig.Centered, null, new RGB(255, 255, 255));
             AccountElements.Add(element);
             this.AddElement(element);
             i++;

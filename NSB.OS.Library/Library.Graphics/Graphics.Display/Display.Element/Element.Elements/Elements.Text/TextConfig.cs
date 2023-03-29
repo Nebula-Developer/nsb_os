@@ -14,11 +14,11 @@ public class TextConfig {
         Height = height;
     }
 
-    public static TextConfig Centered = new TextConfig(TextOrientation.Horizontal, TextAlignment.Center);
-    public static TextConfig Right = new TextConfig(TextOrientation.Horizontal, TextAlignment.Right);
-    public static TextConfig CenteredVertical = new TextConfig(TextOrientation.Vertical, TextAlignment.Center);
-    public static TextConfig RightVertical = new TextConfig(TextOrientation.Vertical, TextAlignment.Right);
-    public static TextConfig Vertical = new TextConfig(TextOrientation.Vertical);
+    public static TextConfig Centered = new(TextOrientation.Horizontal, TextAlignment.Center);
+    public static TextConfig Right = new(TextOrientation.Horizontal, TextAlignment.Right);
+    public static TextConfig CenteredVertical = new(TextOrientation.Vertical, TextAlignment.Center);
+    public static TextConfig RightVertical = new(TextOrientation.Vertical, TextAlignment.Right);
+    public static TextConfig Vertical = new(TextOrientation.Vertical);
 }
 
 public enum TextOrientation {

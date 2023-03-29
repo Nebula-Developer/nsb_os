@@ -39,7 +39,7 @@ public static class Programs {
     }
 
     public static ProgramReturn RunProgramExecutable(ProgramExecutable programExecutable) {
-        ProgramReturn returns = new ProgramReturn(0, null);
+        ProgramReturn returns = new(0, null);
 
         Type? programAType = programExecutable.assembly.GetType(programExecutable.assembly.GetName().Name + ".Program");
         MethodInfo? runMethod = programAType?.GetMethod("Run");

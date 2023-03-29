@@ -1,4 +1,4 @@
-﻿using NSB.OS.Graphics.DisplayNS;
+using NSB.OS.Graphics.DisplayNS;
 using NSB.OS.Graphics.Mathematics;
 using NSB.OS.Runtime.Tests;
 using NSB.OS.FileSystem;
@@ -8,23 +8,20 @@ using NSB.OS.SystemNS.InputNS;
 
 namespace NSB.OS;
 
-public static class OS
-{
+public static class OS {
     private static Drive root => SystemDrives.BootDrive;
 
-    public static void Main(String[] args)
-    {
+    public static void Main(String[] args) {
         Boot.Init();
 
-        if (args.Contains("--test-link") || args.Contains("-t"))
-        {
+        if (args.Contains("--test-link") || args.Contains("-t")) {
             Link.TestLink();
             return;
         }
 
         Console.CursorVisible = false;
-        RendererStack renderer = new RendererStack();
-        Login login = new Login(new Vector2i(0, 0), new Vector2i(80, Math.Min(Console.WindowHeight, 25)), renderer);
+        RendererStack renderer = new();
+        Login login = new(new Vector2i(0, 0), new Vector2i(80, Math.Min(Console.WindowHeight, 25)), renderer);
         renderer.AddDisplay(login);
         // ProgramSelect programSelect = new ProgramSelect(new Vector2i(0, 0), new Vector2i(80, Math.Min(Console.WindowHeight, 25)), renderer);
         // renderer.AddDisplay(programSelect);
